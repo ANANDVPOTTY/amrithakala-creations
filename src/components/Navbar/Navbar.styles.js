@@ -3,6 +3,12 @@ import { Box, Typography, IconButton, Drawer } from "@mui/material";
 import { responsiveFont } from "../../theme/responsiveFont";
 import { responsivePagePadding } from "../../theme/commonStyles";
 
+/*-------| GRADIENT |-------*/
+const navbarGradient =
+  "linear-gradient(90deg, var(--color-primary-dark) 0%, var(--color-primary) 30%, var(--color-primary) 70%, var(--color-primary-dark) 100%)";
+
+/*-------| Drawer |-------*/
+
 export const NavbarContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
@@ -10,9 +16,8 @@ export const NavbarContainer = styled(Box)(({ theme }) => ({
   paddingTop: "14px",
   paddingBottom: "14px",
   ...responsivePagePadding(theme),
-  backgroundColor: "var(--color-white)",
-  borderBottom: "1px solid var(--color-grey-200)",
-  boxShadow: "0 1px 8px rgba(40, 9, 5, 0.06)",
+  background: navbarGradient,
+  boxShadow: "0 4px 20px rgba(40, 9, 5, 0.3)",
   position: "fixed",
   top: 0,
   left: 0,
@@ -43,22 +48,22 @@ export const MenuList = styled(Box)(({ theme }) => ({
 
 export const MenuItem = styled(Typography)(({ theme }) => ({
   ...responsiveFont(theme, "16px"),
-  color: "var(--color-grey-800)",
+  color: "rgba(255, 255, 255, 0.85)",
   cursor: "pointer",
   fontWeight: 500,
   padding: "8px 16px",
   borderRadius: "8px",
   transition: "all 0.25s ease",
   "&:hover": {
-    backgroundColor: "rgba(195, 17, 12, 0.08)",
-    color: "var(--color-primary)",
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    color: "var(--color-white)",
   },
 }));
 
 /*-------| Mobile Hamburger |-------*/
 export const HamburgerButton = styled(IconButton)(({ theme }) => ({
   display: "none",
-  color: "var(--color-primary-darkest)",
+  color: "var(--color-white)",
   [theme.breakpoints.down("md")]: {
     display: "flex",
   },
@@ -68,7 +73,7 @@ export const DrawerCloseButton = styled(IconButton)({
   display: "flex",
   alignSelf: "flex-end",
   marginRight: "12px",
-  color: "var(--color-grey-800)",
+  color: "var(--color-grey-700)",
 });
 
 /*-------| Mobile Drawer |-------*/
@@ -95,7 +100,7 @@ export const MobileMenuItem = styled(Typography)(({ theme }) => ({
   padding: "14px 24px",
   transition: "all 0.25s ease",
   "&:hover": {
-    backgroundColor: "rgba(195, 17, 12, 0.08)",
-    color: "var(--color-primary)",
+    backgroundColor: "var(--color-grey-100)",
+    color: "var(--color-black)",
   },
 }));

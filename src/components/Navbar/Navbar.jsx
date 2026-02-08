@@ -14,7 +14,7 @@ import {
 } from "./Navbar.styles";
 import logo from "../../assets/images/logo.png";
 
-const menuItems = ["Home", "Services", "Contact"];
+const menuItems = ["About Us", " Bookings", "Gallery"];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
