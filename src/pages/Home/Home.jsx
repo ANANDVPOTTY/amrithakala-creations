@@ -1,17 +1,19 @@
-import { Box, Typography } from '@mui/material';
+import {
+  HeroSection,
+  HeroContent,
+  HeroTitle,
+  HeroSubtitle,
+} from "./Home.styles";
+import homeBgImage from "../../assets/images/homeBgImage.png";
 
 const Home = () => {
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-    >
-      <Typography variant="h3" component="h1">
-        AK Creations
-      </Typography>
-    </Box>
+    <HeroSection sx={{ backgroundImage: `url(${homeBgImage})` }}>
+      <HeroContent>
+        <HeroTitle>AK Creations</HeroTitle>
+        <HeroSubtitle>Where Art Meets Elegance</HeroSubtitle>
+      </HeroContent>
+    </HeroSection>
   );
 };
 

@@ -18,9 +18,19 @@ const menuItems = ["About Us", " Bookings", "Gallery"];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState(menuItems[0]);
 
   const toggleDrawer = () => {
     setDrawerOpen((prev) => !prev);
+  };
+
+  const handleItemClick = (item) => {
+    setActiveItem(item);
+  };
+
+  const handleMobileItemClick = (item) => {
+    setActiveItem(item);
+    toggleDrawer();
   };
 
   return (
@@ -29,7 +39,13 @@ const Navbar = () => {
 
       <MenuList>
         {menuItems.map((item) => (
-          <MenuItem key={item}>{item}</MenuItem>
+          <MenuItem
+            key={item}
+            active={activeItem === item}
+            onClick={() => handleItemClick(item)}
+          >
+            {item}
+          </MenuItem>
         ))}
       </MenuList>
 
@@ -44,7 +60,11 @@ const Navbar = () => {
 
         <MobileMenuList>
           {menuItems.map((item) => (
-            <MobileMenuItem key={item} onClick={toggleDrawer}>
+            <MobileMenuItem
+              key={item}
+              active={activeItem === item}
+              onClick={() => handleMobileItemClick(item)}
+            >
               {item}
             </MobileMenuItem>
           ))}
