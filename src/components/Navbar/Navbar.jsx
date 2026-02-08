@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -12,22 +13,28 @@ import {
   MobileDrawer,
   MobileMenuList,
   MobileMenuItem,
+  LanguageToggleButton,
 } from "./Navbar.styles";
 import logo from "../../assets/images/logo.png";
 
 const menuItems = [
-  { label: "About Us", path: "/about-us" },
-  { label: "Bookings", path: "/bookings" },
-  { label: "Gallery", path: "/gallery" },
+  { labelKey: "nav.aboutUs", path: "/about-us" },
+  { labelKey: "nav.bookings", path: "/bookings" },
+  { labelKey: "nav.gallery", path: "/gallery" },
 ];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const toggleDrawer = () => {
     setDrawerOpen((prev) => !prev);
+  };
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === "ml" ? "en" : "ml");
   };
 
   const handleItemClick = (path) => {
@@ -42,6 +49,7 @@ const Navbar = () => {
   return (
     <NavbarContainer component="nav">
       <LogoImage
+        title={t("nav.home")}
         src={logo}
         alt="AK Creations"
         onClick={() => navigate("/")}
@@ -54,9 +62,12 @@ const Navbar = () => {
             active={location.pathname === item.path}
             onClick={() => handleItemClick(item.path)}
           >
-            {item.label}
+            {t(item.labelKey)}
           </MenuItem>
         ))}
+        <LanguageToggleButton onClick={toggleLanguage}>
+          {t("language.toggle")}
+        </LanguageToggleButton>
       </MenuList>
 
       <HamburgerButton onClick={toggleDrawer}>
@@ -75,9 +86,12 @@ const Navbar = () => {
               active={location.pathname === item.path}
               onClick={() => handleMobileItemClick(item.path)}
             >
-              {item.label}
+              {t(item.labelKey)}
             </MobileMenuItem>
           ))}
+          <LanguageToggleButton onClick={toggleLanguage}>
+            {t("language.toggle")}
+          </LanguageToggleButton>
         </MobileMenuList>
       </MobileDrawer>
     </NavbarContainer>

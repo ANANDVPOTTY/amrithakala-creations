@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "home": "ഹോം",
+    "aboutUs": "ഞങ്ങളെ കുറിച്ച്",
+    "bookings": "ബുക്കിംഗ്",
+    "gallery": "ഗാലറി"
+  },
+  "home": {
+    "title": "AK Creations",
+    "subtitle": "കലയും ചാരുതയും ഒന്നിക്കുന്നിടം"
+  },
+  "aboutUs": {
+    "title": "ഞങ്ങളെ കുറിച്ച്"
+  },
+  "bookings": {
+    "title": "ബുക്കിംഗ്"
+  },
+  "gallery": {
+    "title": "ഗാലറി"
+  },
+  "language": {
+    "toggle": "English"
+  }
+}

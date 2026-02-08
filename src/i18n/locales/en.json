@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "bookings": "Bookings",
+    "gallery": "Gallery"
+  },
+  "home": {
+    "title": "AK Creations",
+    "subtitle": "Where Art Meets Elegance"
+  },
+  "aboutUs": {
+    "title": "About Us"
+  },
+  "bookings": {
+    "title": "Bookings"
+  },
+  "gallery": {
+    "title": "Gallery"
+  },
+  "language": {
+    "toggle": "മലയാളം"
+  }
+}

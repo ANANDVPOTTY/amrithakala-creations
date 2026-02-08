@@ -1,9 +1,12 @@
+import { useTranslation } from "react-i18next";
 import { AboutUsContainer, AboutUsTitle } from "./AboutUs.styles";
 
 const AboutUs = () => {
+  const { t } = useTranslation();
+
   return (
     <AboutUsContainer>
-      <AboutUsTitle>About Us</AboutUsTitle>
+      <AboutUsTitle>{t("aboutUs.title")}</AboutUsTitle>
     </AboutUsContainer>
   );
 };

@@ -51,6 +51,7 @@ export const MenuItem = styled(Button, {
   textTransform: "none",
   minWidth: "auto",
   ...responsiveFont(theme, "16px"),
+
   color: active ? "var(--color-white)" : "rgba(255, 255, 255, 0.85)",
   cursor: "pointer",
   fontWeight: 500,
@@ -109,6 +110,7 @@ export const MobileMenuItem = styled(Button, {
 })(({ theme, active }) => ({
   width: "100%",
   ...responsiveFont(theme, "18px"),
+
   color: active ? "var(--color-white)" : "rgba(255, 255, 255, 0.85)",
   fontWeight: 500,
   padding: "14px 24px",
@@ -120,6 +122,27 @@ export const MobileMenuItem = styled(Button, {
 
   "&:hover": {
     backgroundColor: "rgba(255, 255, 255, 0.15)",
+    color: "var(--color-white)",
+  },
+}));
+
+/*-------| Language Toggle |-------*/
+export const LanguageToggleButton = styled(Button)(({ theme }) => ({
+  textTransform: "none",
+  minWidth: "auto",
+  ...responsiveFont(theme, "14px"),
+
+  color: "rgba(255, 255, 255, 0.85)",
+  fontWeight: 500,
+  padding: "6px 16px",
+  borderRadius: "20px",
+  border: "1px solid rgba(255, 255, 255, 0.2)",
+  backgroundColor: "rgba(255, 255, 255, 0.08)",
+  transition: "all 0.3s ease",
+
+  "&:hover": {
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    borderColor: "rgba(255, 255, 255, 0.3)",
     color: "var(--color-white)",
   },
 }));

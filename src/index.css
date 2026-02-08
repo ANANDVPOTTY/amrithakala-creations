@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Arima:wght@100..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 :root {
-  --font-special: "Cinzel Decorative", serif;
-  --font-primary: "Arima", system-ui;
+  --font-malayalam: "Arima", system-ui;
+  --font-english: "Open Sans", sans-serif;
+  --font-active: var(--font-malayalam);
 
   /* Brand palette */
   --color-primary-darkest: #280905;
@@ -33,6 +34,11 @@
   --color-info: #0288d1;
 }
 
+/* English mode override */
+:root[data-lang="en"] {
+  --font-active: var(--font-english);
+}
+
 *,
 *::before,
 *::after {
@@ -54,6 +60,7 @@ html {
 
 body {
   min-height: 100vh;
+  font-family: var(--font-active);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   HeroSection,
   HeroContent,
@@ -7,11 +8,13 @@ import {
 import homeBgImage from "../../assets/images/homeBgImage.png";
 
 const Home = () => {
+  const { t } = useTranslation();
+
   return (
     <HeroSection sx={{ backgroundImage: `url(${homeBgImage})` }}>
       <HeroContent>
-        <HeroTitle>AK Creations</HeroTitle>
-        <HeroSubtitle>Where Art Meets Elegance</HeroSubtitle>
+        <HeroTitle>{t("home.title")}</HeroTitle>
+        <HeroSubtitle>{t("home.subtitle")}</HeroSubtitle>
       </HeroContent>
     </HeroSection>
   );

@@ -31,6 +31,7 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     paddingLeft: "80px",
     paddingRight: "80px",
   },
+
   [theme.breakpoints.down("md")]: {
     marginLeft: "-40px",
     marginRight: "-40px",
@@ -38,6 +39,7 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     paddingRight: "40px",
     backgroundPosition: "center center",
   },
+
   [theme.breakpoints.down("sm")]: {
     marginLeft: "-20px",
     marginRight: "-20px",

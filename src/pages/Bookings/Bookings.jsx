@@ -1,9 +1,12 @@
+import { useTranslation } from "react-i18next";
 import { BookingsContainer, BookingsTitle } from "./Bookings.styles";
 
 const Bookings = () => {
+  const { t } = useTranslation();
+
   return (
     <BookingsContainer>
-      <BookingsTitle>Bookings</BookingsTitle>
+      <BookingsTitle>{t("bookings.title")}</BookingsTitle>
     </BookingsContainer>
   );
 };
