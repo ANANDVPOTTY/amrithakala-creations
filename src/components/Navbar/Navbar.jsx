@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import {
   NavbarContainer,
   LogoImage,
@@ -13,7 +14,8 @@ import {
   MobileDrawer,
   MobileMenuList,
   MobileMenuItem,
-  LanguageToggleButton,
+  DrawerDivider,
+  DrawerBottomSection,
 } from "./Navbar.styles";
 import logo from "../../assets/images/logo.png";
 
@@ -27,14 +29,10 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const toggleDrawer = () => {
     setDrawerOpen((prev) => !prev);
-  };
-
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === "ml" ? "en" : "ml");
   };
 
   const handleItemClick = (path) => {
@@ -65,9 +63,7 @@ const Navbar = () => {
             {t(item.labelKey)}
           </MenuItem>
         ))}
-        <LanguageToggleButton onClick={toggleLanguage}>
-          {t("language.toggle")}
-        </LanguageToggleButton>
+        <LanguageToggle />
       </MenuList>
 
       <HamburgerButton onClick={toggleDrawer}>
@@ -89,10 +85,12 @@ const Navbar = () => {
               {t(item.labelKey)}
             </MobileMenuItem>
           ))}
-          <LanguageToggleButton onClick={toggleLanguage}>
-            {t("language.toggle")}
-          </LanguageToggleButton>
         </MobileMenuList>
+
+        <DrawerBottomSection>
+          <DrawerDivider />
+          <LanguageToggle />
+        </DrawerBottomSection>
       </MobileDrawer>
     </NavbarContainer>
   );
