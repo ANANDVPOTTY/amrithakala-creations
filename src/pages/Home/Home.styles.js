@@ -29,6 +29,11 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     backgroundRepeat: "no-repeat",
     transform: "scaleX(-1)",
     zIndex: -2,
+
+    [theme.breakpoints.down("md")]: {
+      backgroundPosition: "center center",
+      transform: "none",
+    },
   },
 
   "&::after": {
@@ -50,7 +55,6 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     marginRight: "-40px",
     paddingLeft: "40px",
     paddingRight: "40px",
-    backgroundPosition: "center center",
   },
 
   [theme.breakpoints.down("sm")]: {
@@ -59,7 +63,6 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     paddingLeft: "20px",
     paddingRight: "20px",
     minHeight: "100svh",
-    backgroundPosition: "top center",
   },
 }));
 
@@ -75,6 +78,12 @@ export const HeroContent = styled(Box)(({ theme }) => ({
   backdropFilter: "blur(6px)",
   WebkitBackdropFilter: "blur(6px)",
   border: "1px solid rgba(255, 255, 255, 0.09)",
+
+  [theme.breakpoints.down("md")]: {
+    maxWidth: "100%",
+    padding: "36px",
+    borderRadius: "14px",
+  },
 
   [theme.breakpoints.down("sm")]: {
     padding: "28px",
@@ -94,6 +103,11 @@ export const HeroTitle = styled(Typography)(({ theme }) => ({
   backgroundClip: "text",
   animation: `${titleReveal} 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, ${gradientFlow} 16s ease-in-out infinite 1.2s`,
   opacity: 0,
+  overflowWrap: "break-word",
+
+  [theme.breakpoints.down("md")]: {
+    fontSize: "clamp(24px, 7vw, 48px)",
+  },
 }));
 
 export const HeroDescription = styled(Typography)(({ theme }) => ({
@@ -104,6 +118,11 @@ export const HeroDescription = styled(Typography)(({ theme }) => ({
   marginTop: "24px",
   animation: `${fadeInUp} 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards`,
   opacity: 0,
+
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "16px",
+    lineHeight: 1.6,
+  },
 }));
 
 export const HeroButtonGroup = styled(Box)(({ theme }) => ({
@@ -113,9 +132,14 @@ export const HeroButtonGroup = styled(Box)(({ theme }) => ({
   animation: `${fadeInUp} 1s cubic-bezier(0.22, 1, 0.36, 1) 1s forwards`,
   opacity: 0,
 
+  [theme.breakpoints.down("md")]: {
+    marginTop: "24px",
+  },
+
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
     gap: "12px",
+    marginTop: "20px",
   },
 }));
 
@@ -132,6 +156,11 @@ export const PrimaryButton = styled(Button)(({ theme }) => ({
   "&:hover": {
     backgroundColor: "var(--color-primary-dark)",
   },
+
+  [theme.breakpoints.down("sm")]: {
+    padding: "10px 24px",
+    borderRadius: "10px",
+  },
 }));
 
 export const SecondaryButton = styled(Button)(({ theme }) => ({
@@ -147,5 +176,10 @@ export const SecondaryButton = styled(Button)(({ theme }) => ({
   "&:hover": {
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     borderColor: "var(--color-white)",
+  },
+
+  [theme.breakpoints.down("sm")]: {
+    padding: "10px 24px",
+    borderRadius: "10px",
   },
 }));

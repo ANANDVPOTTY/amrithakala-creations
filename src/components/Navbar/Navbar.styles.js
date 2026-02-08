@@ -19,6 +19,11 @@ export const NavbarContainer = styled(Box)(({ theme }) => ({
   left: 0,
   width: "100%",
   zIndex: 1100,
+
+  [theme.breakpoints.down("sm")]: {
+    paddingTop: "10px",
+    paddingBottom: "10px",
+  },
 }));
 
 export const LogoImage = styled("img")(({ theme }) => ({
@@ -83,7 +88,7 @@ export const DrawerCloseButton = styled(IconButton)({
 });
 
 /*-------| Mobile Drawer |-------*/
-export const MobileDrawer = styled(Drawer)({
+export const MobileDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     width: "280px",
     background: "rgba(0, 0, 0, 0.25)",
@@ -94,8 +99,12 @@ export const MobileDrawer = styled(Drawer)({
     border: "1px solid rgba(255, 255, 255, 0.1)",
     display: "flex",
     flexDirection: "column",
+
+    [theme.breakpoints.down(400)]: {
+      width: "100vw",
+    },
   },
-});
+}));
 
 export const MobileMenuList = styled(Box)({
   display: "flex",
