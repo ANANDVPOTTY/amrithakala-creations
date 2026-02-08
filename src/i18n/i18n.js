@@ -17,8 +17,8 @@ i18n.use(initReactI18next).init({
   },
 });
 
-// Sync font CSS variable on language change
-const applyFontLang = (lang) => {
+// Apply font CSS variable for the given language
+const setFontLang = (lang) => {
   if (lang === "en") {
     document.documentElement.setAttribute("data-lang", "en");
   } else {
@@ -27,7 +27,21 @@ const applyFontLang = (lang) => {
   localStorage.setItem("ak-lang", lang);
 };
 
-applyFontLang(savedLang);
-i18n.on("languageChanged", applyFontLang);
+// Animate the switch with a fade transition
+const applyFontLangWithAnimation = (lang) => {
+  const root = document.getElementById("root");
+  if (root) {
+    root.classList.add("lang-switching");
+    root.addEventListener(
+      "animationend",
+      () => root.classList.remove("lang-switching"),
+      { once: true }
+    );
+  }
+  setFontLang(lang);
+};
+
+setFontLang(savedLang);
+i18n.on("languageChanged", applyFontLangWithAnimation);
 
 export default i18n;
