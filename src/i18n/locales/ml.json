@@ -18,6 +18,9 @@
   "gallery": {
     "title": "ഗാലറി"
   },
+  "footer": {
+    "copyright": "© {{year}} AK Creations. എല്ലാ അവകാശങ്ങളും സംരക്ഷിതം."
+  },
   "language": {
     "toggle": "English"
   }
