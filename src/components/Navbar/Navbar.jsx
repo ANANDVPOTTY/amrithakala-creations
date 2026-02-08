@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -14,37 +15,46 @@ import {
 } from "./Navbar.styles";
 import logo from "../../assets/images/logo.png";
 
-const menuItems = ["About Us", " Bookings", "Gallery"];
+const menuItems = [
+  { label: "About Us", path: "/about-us" },
+  { label: "Bookings", path: "/bookings" },
+  { label: "Gallery", path: "/gallery" },
+];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(menuItems[0]);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleDrawer = () => {
     setDrawerOpen((prev) => !prev);
   };
 
-  const handleItemClick = (item) => {
-    setActiveItem(item);
+  const handleItemClick = (path) => {
+    navigate(path);
   };
 
-  const handleMobileItemClick = (item) => {
-    setActiveItem(item);
+  const handleMobileItemClick = (path) => {
+    navigate(path);
     toggleDrawer();
   };
 
   return (
     <NavbarContainer component="nav">
-      <LogoImage src={logo} alt="AK Creations" />
+      <LogoImage
+        src={logo}
+        alt="AK Creations"
+        onClick={() => navigate("/")}
+      />
 
       <MenuList>
         {menuItems.map((item) => (
           <MenuItem
-            key={item}
-            active={activeItem === item}
-            onClick={() => handleItemClick(item)}
+            key={item.path}
+            active={location.pathname === item.path}
+            onClick={() => handleItemClick(item.path)}
           >
-            {item}
+            {item.label}
           </MenuItem>
         ))}
       </MenuList>
@@ -61,11 +71,11 @@ const Navbar = () => {
         <MobileMenuList>
           {menuItems.map((item) => (
             <MobileMenuItem
-              key={item}
-              active={activeItem === item}
-              onClick={() => handleMobileItemClick(item)}
+              key={item.path}
+              active={location.pathname === item.path}
+              onClick={() => handleMobileItemClick(item.path)}
             >
-              {item}
+              {item.label}
             </MobileMenuItem>
           ))}
         </MobileMenuList>
