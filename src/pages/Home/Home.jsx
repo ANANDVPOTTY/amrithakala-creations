@@ -3,7 +3,10 @@ import {
   HeroSection,
   HeroContent,
   HeroTitle,
-  HeroSubtitle,
+  HeroDescription,
+  HeroButtonGroup,
+  PrimaryButton,
+  SecondaryButton,
 } from "./Home.styles";
 import homeBgImage from "../../assets/images/homeBgImage.png";
 
@@ -11,10 +14,21 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <HeroSection sx={{ backgroundImage: `url(${homeBgImage})` }}>
+    <HeroSection
+      sx={{
+        "&::before": {
+          backgroundImage: `url(${homeBgImage})`,
+        },
+      }}
+    >
       <HeroContent>
         <HeroTitle>{t("home.title")}</HeroTitle>
-        <HeroSubtitle>{t("home.subtitle")}</HeroSubtitle>
+        <HeroDescription>{t("home.description")}</HeroDescription>
+
+        <HeroButtonGroup>
+          <PrimaryButton>{t("home.bookNow")}</PrimaryButton>
+          <SecondaryButton>{t("home.aboutUs")}</SecondaryButton>
+        </HeroButtonGroup>
       </HeroContent>
     </HeroSection>
   );
