@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   HeroSection,
@@ -26,8 +27,12 @@ const Home = () => {
         <HeroDescription>{t("home.description")}</HeroDescription>
 
         <HeroButtonGroup>
-          <PrimaryButton>{t("home.bookNow")}</PrimaryButton>
-          <SecondaryButton>{t("home.aboutUs")}</SecondaryButton>
+          <PrimaryButton component={Link} to="/bookings">
+            {t("home.bookNow")}
+          </PrimaryButton>
+          <SecondaryButton component={Link} to="/about-us">
+            {t("home.aboutUs")}
+          </SecondaryButton>
         </HeroButtonGroup>
       </HeroContent>
     </HeroSection>

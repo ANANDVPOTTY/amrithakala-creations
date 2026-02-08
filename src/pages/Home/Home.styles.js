@@ -18,6 +18,7 @@ export const HeroSection = styled(Box)(({ theme }) => ({
   paddingLeft: "15rem",
   paddingRight: "15rem",
   position: "relative",
+  isolation: "isolate",
 
   "&::before": {
     content: '""',
@@ -96,7 +97,7 @@ export const HeroTitle = styled(Typography)(({ theme }) => ({
 }));
 
 export const HeroDescription = styled(Typography)(({ theme }) => ({
-  ...responsiveFont(theme, "18px"),
+  ...responsiveFont(theme, "14px"),
   color: "rgba(255, 255, 255, 0.85)",
   fontWeight: 400,
   lineHeight: 1.8,
