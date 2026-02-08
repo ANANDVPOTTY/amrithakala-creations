@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import {
   NavbarContainer,
   LogoImage,
@@ -11,26 +14,56 @@ import {
   MobileDrawer,
   MobileMenuList,
   MobileMenuItem,
+  DrawerDivider,
+  DrawerBottomSection,
 } from "./Navbar.styles";
 import logo from "../../assets/images/logo.png";
 
-const menuItems = ["Home", "Services", "Contact"];
+const menuItems = [
+  { labelKey: "nav.aboutUs", path: "/about-us" },
+  { labelKey: "nav.bookings", path: "/bookings" },
+  { labelKey: "nav.gallery", path: "/gallery" },
+];
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const toggleDrawer = () => {
     setDrawerOpen((prev) => !prev);
   };
 
+  const handleItemClick = (path) => {
+    navigate(path);
+  };
+
+  const handleMobileItemClick = (path) => {
+    navigate(path);
+    toggleDrawer();
+  };
+
   return (
     <NavbarContainer component="nav">
-      <LogoImage src={logo} alt="AK Creations" />
+      <LogoImage
+        title={t("nav.home")}
+        src={logo}
+        alt="AK Creations"
+        onClick={() => navigate("/")}
+      />
 
       <MenuList>
         {menuItems.map((item) => (
-          <MenuItem key={item}>{item}</MenuItem>
+          <MenuItem
+            key={item.path}
+            active={location.pathname === item.path}
+            onClick={() => handleItemClick(item.path)}
+          >
+            {t(item.labelKey)}
+          </MenuItem>
         ))}
+        <LanguageToggle />
       </MenuList>
 
       <HamburgerButton onClick={toggleDrawer}>
@@ -44,11 +77,20 @@ const Navbar = () => {
 
         <MobileMenuList>
           {menuItems.map((item) => (
-            <MobileMenuItem key={item} onClick={toggleDrawer}>
-              {item}
+            <MobileMenuItem
+              key={item.path}
+              active={location.pathname === item.path}
+              onClick={() => handleMobileItemClick(item.path)}
+            >
+              {t(item.labelKey)}
             </MobileMenuItem>
           ))}
         </MobileMenuList>
+
+        <DrawerBottomSection>
+          <DrawerDivider />
+          <LanguageToggle />
+        </DrawerBottomSection>
       </MobileDrawer>
     </NavbarContainer>
   );

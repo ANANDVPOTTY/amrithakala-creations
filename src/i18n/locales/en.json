@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "bookings": "Bookings",
+    "gallery": "Gallery"
+  },
+  "home": {
+    "title": "Amrithakala Creations",
+    "description": "Amrithakala Creations, the team behind the music album \"Thulasikkathir Nulliyeduthu\" for Malayalis worldwide, is a cultural platform where tradition meets modernity. From the historical drama \"Shivaneriyile Simhagarjjanam\", ritual art forms like Sopana Sangeetham and Kathakali, to Chenda Melam ensembles that elevate celebrations, musical concerts, fusion music, and more — Amrithakala Creations brings a diverse array of performances to your doorstep. The creative brilliance of art, now closer to you!",
+    "bookNow": "Book Now",
+    "aboutUs": "About Us"
+  },
+  "aboutUs": {
+    "title": "About Us"
+  },
+  "bookings": {
+    "title": "Bookings"
+  },
+  "gallery": {
+    "title": "Gallery"
+  },
+  "footer": {
+    "copyright": "© {{year}} Amrithakala Creations. All rights reserved."
+  },
+  "language": {
+    "toggle": "മലയാളം"
+  }
+}
