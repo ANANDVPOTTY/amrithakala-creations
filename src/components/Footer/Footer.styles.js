@@ -10,6 +10,11 @@ export const FooterContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "var(--color-primary-darkest)",
   borderTop: "1px solid rgba(255, 255, 255, 0.1)",
   textAlign: "center",
+
+  [theme.breakpoints.down("sm")]: {
+    paddingTop: "16px",
+    paddingBottom: "16px",
+  },
 }));
 
 export const CopyrightText = styled(Typography)(({ theme }) => ({
