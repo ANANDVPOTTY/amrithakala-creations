@@ -25,6 +25,7 @@ const setFontLang = (lang) => {
     document.documentElement.removeAttribute("data-lang");
   }
   localStorage.setItem("ak-lang", lang);
+  document.title = i18n.t("pageTitle");
 };
 
 // Animate the switch with a fade transition
