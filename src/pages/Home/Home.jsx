@@ -10,17 +10,21 @@ import {
   SecondaryButton,
 } from "./Home.styles";
 import homeBgImage from "../../assets/images/homeBgImage.png";
+import mobileBgImage from "../../assets/images/mobile-bg.png";
 
 const Home = () => {
   const { t } = useTranslation();
 
   return (
     <HeroSection
-      sx={{
+      sx={(theme) => ({
         "&::before": {
           backgroundImage: `url(${homeBgImage})`,
+          [theme.breakpoints.down("sm")]: {
+            backgroundImage: `url(${mobileBgImage})`,
+          },
         },
-      }}
+      })}
     >
       <HeroContent>
         <HeroTitle>{t("home.title")}</HeroTitle>
