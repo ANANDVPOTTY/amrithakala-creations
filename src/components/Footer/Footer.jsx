@@ -1,5 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { FooterContainer, CopyrightText } from "./Footer.styles";
+import bigLogo from "../../assets/images/logo.png";
+import {
+  FooterContainer,
+  LogoSection,
+  FooterLogo,
+  CopyrightText,
+} from "./Footer.styles";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -7,9 +13,13 @@ const Footer = () => {
 
   return (
     <FooterContainer component="footer">
-      <CopyrightText>
-        {t("footer.copyright", { year })}
-      </CopyrightText>
+      <LogoSection
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <FooterLogo src={bigLogo} alt={t("footer.logoAlt")} />
+      </LogoSection>
+
+      <CopyrightText>{t("footer.copyright", { year })}</CopyrightText>
     </FooterContainer>
   );
 };

@@ -22,7 +22,8 @@
     "title": "Gallery"
   },
   "footer": {
-    "copyright": "© {{year}} Amrithakala Creations. All rights reserved."
+    "copyright": "© {{year}} Amrithakala Creations. All rights reserved.",
+    "logoAlt": "Amrithakala Creations Logo"
   },
   "language": {
     "toggle": "മലയാളം"

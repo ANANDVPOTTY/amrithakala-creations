@@ -27,15 +27,15 @@ export const NavbarContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const LogoImage = styled("img")(({ theme }) => ({
-  height: "70px",
+  height: "34px",
   cursor: "pointer",
 
   [theme.breakpoints.down("md")]: {
-    height: "56px",
+    height: "28px",
   },
 
   [theme.breakpoints.down("sm")]: {
-    height: "46px",
+    height: "22px",
   },
 }));
 

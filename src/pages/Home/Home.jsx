@@ -34,6 +34,7 @@ const Home = () => {
           <PrimaryButton component={Link} to="/bookings">
             {t("home.bookNow")}
           </PrimaryButton>
+
           <SecondaryButton component={Link} to="/about-us">
             {t("home.aboutUs")}
           </SecondaryButton>

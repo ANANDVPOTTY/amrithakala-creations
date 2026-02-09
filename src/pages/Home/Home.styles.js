@@ -73,7 +73,7 @@ export const HeroContent = styled(Box)(({ theme }) => ({
   maxWidth: "840px",
   borderRadius: "16px",
   padding: "48px",
-  marginTop: "28px",
+  marginTop: "28px 0",
 
   backgroundColor: "rgba(0, 0, 0, 0.4)",
   backdropFilter: "blur(6px)",
@@ -143,7 +143,7 @@ export const HeroButtonGroup = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
-    gap: "12px",
+    gap: "22px",
     marginTop: "20px",
   },
 }));
