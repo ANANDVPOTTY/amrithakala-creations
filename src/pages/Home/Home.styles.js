@@ -73,6 +73,7 @@ export const HeroContent = styled(Box)(({ theme }) => ({
   maxWidth: "840px",
   borderRadius: "16px",
   padding: "48px",
+  marginTop: "28px",
 
   backgroundColor: "rgba(0, 0, 0, 0.4)",
   backdropFilter: "blur(6px)",
@@ -88,6 +89,10 @@ export const HeroContent = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     padding: "28px",
     borderRadius: "12px",
+    backgroundColor: "rgba(0, 0, 0, 0.15)",
+    backdropFilter: "blur(2px)",
+    WebkitBackdropFilter: "blur(2px)",
+    border: "1px solid rgba(255, 255, 255, 0.03)",
   },
 }));
 
