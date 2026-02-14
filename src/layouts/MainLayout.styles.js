@@ -7,8 +7,9 @@ export const MainContainer = styled(Box)({
 });
 
 export const ContentWrapper = styled(Box)(({ theme }) => ({
-  marginTop: "64px",
-  backgroundColor: "var(--color-dark)",
+  paddingTop: "64px",
+  background:
+    "linear-gradient(180deg, var(--color-primary-darkest) 0%, var(--color-dark) 120px, var(--color-dark) 100%)",
   minHeight: "100vh",
   ...responsivePagePadding(theme),
 }));
