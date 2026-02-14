@@ -73,7 +73,6 @@ export const HeroContent = styled(Box)(({ theme }) => ({
   maxWidth: "840px",
   borderRadius: "16px",
   padding: "48px",
-  marginTop: "28px 0",
 
   backgroundColor: "rgba(0, 0, 0, 0.4)",
   backdropFilter: "blur(6px)",
@@ -120,6 +119,7 @@ export const HeroDescription = styled(Typography)(({ theme }) => ({
   color: "rgba(255, 255, 255, 0.85)",
   fontWeight: 400,
   lineHeight: 1.8,
+  whiteSpace: "pre-line",
   marginTop: "24px",
   animation: `${fadeInUp} 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards`,
   opacity: 0,

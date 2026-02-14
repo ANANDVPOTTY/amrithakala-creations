@@ -3,9 +3,11 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/amrithakala-creations/',
+  base: '/',
   plugins: [react()],
   server: {
-    open: true,
+    host: '0.0.0.0',
+    port: 5000,
+    allowedHosts: true,
   },
 })
