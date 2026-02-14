@@ -224,6 +224,7 @@ const Bookings = () => {
   return (
     <FormWrapper bgImage={bookingBgImage} mobileBgImage={bookingMobileBgImage}>
       <PageTitle>{t("bookings.title")}</PageTitle>
+
       <FormCard component="form" onSubmit={handleSubmit} noValidate>
         <FormTitle>{t("bookings.formTitle")}</FormTitle>
 

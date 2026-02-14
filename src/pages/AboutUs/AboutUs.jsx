@@ -159,6 +159,7 @@ const AboutUs = () => {
           <MuteToggle onClick={toggleMute}>
             {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
           </MuteToggle>
+
           <CtaContent>
             <CtaButton component={Link} to="/bookings">
               {t("aboutUs.ctaButton")}
@@ -198,11 +199,7 @@ const AboutUs = () => {
               >
                 <InstagramIcon />
               </SocialLink>
-              <SocialLink
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <SocialLink href="#" target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon />
               </SocialLink>
               <SocialLink
@@ -231,7 +228,7 @@ const AboutUs = () => {
 
           <MapWrapper>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.5!2d76.5741!3d9.3816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0621ec0e0e0001%3A0x1234567890abcdef!2sThottabhagam%2C%20Thiruvalla%2C%20Kerala%20689541!5e0!3m2!1sen!2sin!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.5!2d76.5741!3d9.3816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0625006d55cfb3%3A0xdd0845f3e4830ca0!2sAmrithakala%20school%20of%20performing%20arts%2C%20Thottabhagom%2C%20Thiruvalla%2C%20Kerala%20689541!5e0!3m2!1sen!2sin!4v1700000000000"
               title={t("aboutUs.locationLabel")}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

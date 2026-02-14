@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { responsiveFont } from "../../theme/responsiveFont";
+import { fadeInUp } from "../../theme/animations";
 
 export const FormWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== "bgImage" && prop !== "mobileBgImage",
@@ -89,6 +90,8 @@ export const PageTitle = styled(Typography)(({ theme }) => ({
   marginBottom: "32px",
   textAlign: "center",
   position: "relative",
+  opacity: 0,
+  animation: `${fadeInUp} 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards`,
 
   "&::after": {
     content: '""',
@@ -106,7 +109,9 @@ export const FormCard = styled(Box)(({ theme }) => ({
   maxWidth: "900px",
   borderRadius: "16px",
   padding: "48px 40px",
-  backgroundColor: "rgba(0, 0, 0, 0.4)",
+  backgroundColor: "rgba(0, 0, 0, 0.55)",
+  opacity: 0,
+  animation: `${fadeInUp} 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards`,
   backdropFilter: "blur(6px)",
   WebkitBackdropFilter: "blur(6px)",
   border: "1px solid rgba(255, 255, 255, 0.09)",
@@ -148,7 +153,7 @@ export const FormCard = styled(Box)(({ theme }) => ({
     color: "var(--color-white)",
     fontFamily: "var(--font-active)",
     "&::placeholder": {
-      color: "var(--color-grey-500)",
+      color: "var(--color-grey-400)",
       opacity: 1,
     },
   },

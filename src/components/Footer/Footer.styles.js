@@ -9,7 +9,7 @@ export const FooterContainer = styled(Box)(({ theme }) => ({
   zIndex: 1,
   paddingTop: "20px",
   paddingBottom: "20px",
-  backgroundColor: "var(--color-primary-darkest)",
+  backgroundColor: "var(--color-grey-900)",
   borderTop: "1px solid rgba(255, 255, 255, 0.1)",
   display: "flex",
   alignItems: "center",
@@ -43,8 +43,8 @@ export const FooterLogo = styled("img")(({ theme }) => ({
 }));
 
 export const CopyrightText = styled(Typography)(({ theme }) => ({
-  ...responsiveFont(theme, "14px"),
-  color: "var(--color-grey-400)",
-  fontWeight: 400,
+  ...responsiveFont(theme, "16px"),
+  color: "var(--color-grey-300)",
+  fontWeight: 500,
   textAlign: "center",
 }));

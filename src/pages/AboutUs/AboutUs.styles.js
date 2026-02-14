@@ -1,7 +1,7 @@
 import { styled, keyframes } from "@mui/material/styles";
 import { Box, Typography, Button } from "@mui/material";
 import { responsiveFont } from "../../theme/responsiveFont";
-import { fadeInUp } from "../../theme/animations";
+import { fadeInUp, slideInLeft, slideInRight } from "../../theme/animations";
 
 const pulse = keyframes`
   0%, 100% { transform: scale(1); }
@@ -160,6 +160,8 @@ export const AboutImagePrimary = styled("img")(() => ({
   borderRadius: "32px",
   border: "2px solid rgba(255, 255, 255, 0.08)",
   boxShadow: "0 12px 40px rgba(0, 0, 0, 0.5)",
+  opacity: 0,
+  animation: `${slideInLeft} 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards`,
 }));
 
 export const AboutImageSecondary = styled("img")(() => ({
@@ -173,6 +175,8 @@ export const AboutImageSecondary = styled("img")(() => ({
   position: "absolute",
   bottom: 0,
   right: 0,
+  opacity: 0,
+  animation: `${slideInRight} 1s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards`,
 }));
 
 export const AboutContent = styled(Box)(({ theme }) => ({
