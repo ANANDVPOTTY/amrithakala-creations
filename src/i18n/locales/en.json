@@ -13,7 +13,25 @@
     "aboutUs": "About Us"
   },
   "aboutUs": {
-    "title": "About Us"
+    "title": "About Us",
+    "aboutLabel": "About Us",
+    "aboutHeading": "Preserving Tradition, Inspiring Generations",
+    "aboutText": "Sivakumar, the visionary founder of Amrithakala Creations, is a passionate custodian of Kerala's rich cultural heritage. As the creative force behind the organization, he orchestrates a diverse range of traditional performances — from grand Chenda Melam ensembles to the acclaimed historical drama \"Shivaneriyile Simhagarjjanam\".\n\nBeyond his organizational role, Sivakumar serves as a dedicated art teacher, nurturing young talents and passing on the timeless traditions of Kerala's classical art forms to the next generation. His dual commitment to both performance and education ensures that these cultural treasures continue to thrive.",
+    "bookNow": "Book Now",
+    "imageAlt": "Sivakumar - Founder of Amrithakala Creations",
+    "artFormsTitle": "Our Art Forms",
+    "statsYears": "Years of Experience",
+    "statsPerformances": "Performances",
+    "statsArtForms": "Art Forms",
+    "statsStudents": "Students Trained",
+    "ctaLabel": "Book Us Now",
+    "ctaHeading": "Bringing Traditional Arts To Your Stage",
+    "ctaButton": "Book Now",
+    "contactTitle": "Contact Us",
+    "addressLabel": "Address",
+    "address": "Amrithakala\nDarshana Building\nThottabhagam P.O\nThiruvalla, Pathanamthitta\n689541",
+    "phoneLabel": "Phone",
+    "locationLabel": "Location"
   },
   "bookings": {
     "title": "Bookings",

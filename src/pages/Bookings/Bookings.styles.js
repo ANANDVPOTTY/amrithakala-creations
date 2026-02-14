@@ -81,7 +81,7 @@ export const FormWrapper = styled(Box, {
 
 export const FormCard = styled(Box)(({ theme }) => ({
   width: "100%",
-  maxWidth: "920px",
+  maxWidth: "900px",
   borderRadius: "16px",
   padding: "48px 40px",
   backgroundColor: "rgba(0, 0, 0, 0.4)",
@@ -269,8 +269,9 @@ export const SignatureCanvas = styled("canvas")(() => ({
 }));
 
 export const Tagline = styled(Typography)(() => ({
-  color: "var(--color-primary-light)",
   fontSize: "18px",
+  color: "var(--color-primary-light)",
+  fontFamily: "var(--font-special)",
   fontWeight: 700,
   textAlign: "center",
   marginBottom: "32px",

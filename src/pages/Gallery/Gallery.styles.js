@@ -118,9 +118,10 @@ export const CarouselSection = styled(Box)(() => ({
 }));
 
 export const SectionTitle = styled(Typography)(() => ({
-  color: "var(--color-white)",
   fontSize: "28px",
+  color: "var(--color-white)",
   fontWeight: 700,
+  fontFamily: "var(--font-special)",
   marginBottom: "32px",
   textAlign: "center",
   position: "relative",
