@@ -3,7 +3,9 @@ import { Box, Typography, Button } from "@mui/material";
 import { responsiveFont } from "../../theme/responsiveFont";
 import { titleReveal, fadeInUp, gradientFlow } from "../../theme/animations";
 
-export const HeroSection = styled(Box)(({ theme }) => ({
+export const HeroSection = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "bgImage" && prop !== "mobileBgImage",
+})(({ theme, bgImage, mobileBgImage }) => ({
   minHeight: "100vh",
   marginTop: "-64px",
   paddingTop: "64px",
@@ -24,6 +26,7 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     content: '""',
     position: "absolute",
     inset: 0,
+    backgroundImage: bgImage ? `url(${bgImage})` : "none",
     backgroundSize: "cover",
     backgroundPosition: "right center",
     backgroundRepeat: "no-repeat",
@@ -33,6 +36,10 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("md")]: {
       backgroundPosition: "center center",
       transform: "none",
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: mobileBgImage ? `url(${mobileBgImage})` : undefined,
     },
   },
 

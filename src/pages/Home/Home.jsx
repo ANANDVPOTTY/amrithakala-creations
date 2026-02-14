@@ -16,16 +16,7 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <HeroSection
-      sx={(theme) => ({
-        "&::before": {
-          backgroundImage: `url(${homeBgImage})`,
-          [theme.breakpoints.down("sm")]: {
-            backgroundImage: `url(${mobileBgImage})`,
-          },
-        },
-      })}
-    >
+    <HeroSection bgImage={homeBgImage} mobileBgImage={mobileBgImage}>
       <HeroContent>
         <HeroTitle>{t("home.title")}</HeroTitle>
         <HeroDescription>{t("home.description")}</HeroDescription>
