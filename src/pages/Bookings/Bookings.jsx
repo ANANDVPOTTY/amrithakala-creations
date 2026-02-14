@@ -1,20 +1,10 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Box,
-  TextField,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  MenuItem,
-  Typography,
-  InputAdornment,
-  IconButton,
-  Snackbar,
-  Alert,
-} from "@mui/material";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { TextField, MenuItem, InputAdornment, Snackbar } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
+import AKDatePicker from "../../components/DateTimePicker/AKDatePicker";
+import AKTimePicker from "../../components/DateTimePicker/AKTimePicker";
 import {
   FormWrapper,
   FormCard,
@@ -24,6 +14,7 @@ import {
   UpiNote,
   TermsBox,
   TermItem,
+  ClearSignatureButton,
   SignatureCanvas,
   SignatureWrapper,
   Tagline,
@@ -31,16 +22,24 @@ import {
   FieldRow,
   UploadArea,
   UploadedPreview,
+  HiddenFileInput,
+  UploadLabel,
+  UploadIcon,
+  UploadHintText,
+  ScreenshotHint,
+  FileNameText,
+  RemoveFileButton,
+  FieldError,
+  StyledCheckbox,
+  DramaFormControl,
+  TermsCheckboxWrapper,
+  TermsCheckbox,
+  TermsLabelText,
+  StyledAlert,
 } from "./Bookings.styles";
 import bookingBgImage from "../../assets/images/booking-bg.png";
-
-const INDIAN_STATES = [
-  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-  "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
-  "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
-  "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
-  "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
-];
+import { INDIAN_STATES } from "../../data/indianStates";
+import selectMenuProps from "../../theme/selectMenuProps";
 
 const Bookings = () => {
   const { t } = useTranslation();
@@ -62,8 +61,8 @@ const Bookings = () => {
     venueDistrict: "",
     venueState: "Kerala",
     venueCountry: "India",
-    performanceDate: "",
-    performanceTime: "",
+    performanceDate: null,
+    performanceTime: null,
     bookingAmount: "",
     advancePaid: "",
     screenshot: null,
@@ -73,7 +72,11 @@ const Bookings = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
 
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -93,7 +96,8 @@ const Bookings = () => {
     const file = e.target.files[0];
     if (file) {
       setForm((prev) => ({ ...prev, screenshot: file }));
-      if (errors.screenshot) setErrors((prev) => ({ ...prev, screenshot: false }));
+      if (errors.screenshot)
+        setErrors((prev) => ({ ...prev, screenshot: false }));
     }
   };
 
@@ -202,20 +206,22 @@ const Bookings = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) {
-      setSnackbar({ open: true, message: t("bookings.fillRequired"), severity: "error" });
+      setSnackbar({
+        open: true,
+        message: t("bookings.fillRequired"),
+        severity: "error",
+      });
       return;
     }
-    setSnackbar({ open: true, message: t("bookings.submitSuccess"), severity: "success" });
+    setSnackbar({
+      open: true,
+      message: t("bookings.submitSuccess"),
+      severity: "success",
+    });
   };
 
   return (
-    <FormWrapper
-      sx={{
-        "&::before": {
-          backgroundImage: `url(${bookingBgImage})`,
-        },
-      }}
-    >
+    <FormWrapper bgImage={bookingBgImage}>
       <FormCard component="form" onSubmit={handleSubmit} noValidate>
         <FormTitle>{t("bookings.formTitle")}</FormTitle>
 
@@ -225,7 +231,7 @@ const Bookings = () => {
         <FieldRow>
           <TextField
             fullWidth
-            label={t("bookings.firstName")}
+            placeholder={t("bookings.firstName")}
             value={form.firstName}
             onChange={handleChange("firstName")}
             error={!!errors.firstName}
@@ -233,7 +239,7 @@ const Bookings = () => {
           />
           <TextField
             fullWidth
-            label={t("bookings.lastName")}
+            placeholder={t("bookings.lastName")}
             value={form.lastName}
             onChange={handleChange("lastName")}
             error={!!errors.lastName}
@@ -246,17 +252,16 @@ const Bookings = () => {
         </SectionLabel>
         <TextField
           fullWidth
-          label={t("bookings.houseName")}
+          placeholder={t("bookings.houseName")}
           value={form.houseName}
           onChange={handleChange("houseName")}
           error={!!errors.houseName}
           size="small"
-          sx={{ mb: 2 }}
         />
         <FieldRow>
           <TextField
             fullWidth
-            label={t("bookings.place")}
+            placeholder={t("bookings.place")}
             value={form.place}
             onChange={handleChange("place")}
             error={!!errors.place}
@@ -264,7 +269,7 @@ const Bookings = () => {
           />
           <TextField
             fullWidth
-            label={t("bookings.city")}
+            placeholder={t("bookings.city")}
             value={form.city}
             onChange={handleChange("city")}
             error={!!errors.city}
@@ -275,18 +280,25 @@ const Bookings = () => {
           <TextField
             fullWidth
             select
-            label={t("bookings.state")}
             value={form.state}
             onChange={handleChange("state")}
             size="small"
+            slotProps={{
+              select: {
+                MenuProps: selectMenuProps,
+                IconComponent: KeyboardArrowDownRoundedIcon,
+              },
+            }}
           >
             {INDIAN_STATES.map((s) => (
-              <MenuItem key={s} value={s}>{s}</MenuItem>
+              <MenuItem key={s} value={s}>
+                {s}
+              </MenuItem>
             ))}
           </TextField>
           <TextField
             fullWidth
-            label={t("bookings.pinCode")}
+            placeholder={t("bookings.pinCode")}
             value={form.pinCode}
             onChange={handleChange("pinCode")}
             size="small"
@@ -294,11 +306,10 @@ const Bookings = () => {
         </FieldRow>
         <TextField
           fullWidth
-          label={t("bookings.country")}
+          placeholder={t("bookings.country")}
           value={form.country}
           onChange={handleChange("country")}
           size="small"
-          sx={{ mb: 2 }}
         />
 
         <SectionLabel>
@@ -306,40 +317,45 @@ const Bookings = () => {
         </SectionLabel>
         <TextField
           fullWidth
-          label={t("bookings.phone")}
+          placeholder={t("bookings.phone")}
           value={form.phone}
           onChange={handleChange("phone")}
           error={!!errors.phone}
           size="small"
-          sx={{ mb: 2 }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">+91</InputAdornment>,
+          slotProps={{
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">+91</InputAdornment>
+              ),
+            },
           }}
         />
 
         <SectionLabel>{t("bookings.agentLabel")}</SectionLabel>
         <TextField
           fullWidth
-          label={t("bookings.agentName")}
+          placeholder={t("bookings.agentName")}
           value={form.agentName}
           onChange={handleChange("agentName")}
           size="small"
-          sx={{ mb: 2 }}
         />
 
         <SectionLabel>
           {t("bookings.dramaLabel")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
-        <FormControlLabel
+        <DramaFormControl
           control={
-            <Checkbox
+            <StyledCheckbox
               checked={form.dramaSelected}
-              onChange={(e) => setForm((prev) => ({ ...prev, dramaSelected: e.target.checked }))}
-              sx={{ color: "var(--color-grey-400)", "&.Mui-checked": { color: "var(--color-primary)" } }}
+              onChange={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  dramaSelected: e.target.checked,
+                }))
+              }
             />
           }
           label={t("bookings.dramaName")}
-          sx={{ color: "var(--color-white)", mb: 2 }}
         />
 
         <SectionLabel>
@@ -348,7 +364,7 @@ const Bookings = () => {
         <FieldRow>
           <TextField
             fullWidth
-            label={t("bookings.place")}
+            placeholder={t("bookings.place")}
             value={form.venuePlace}
             onChange={handleChange("venuePlace")}
             error={!!errors.venuePlace}
@@ -356,7 +372,7 @@ const Bookings = () => {
           />
           <TextField
             fullWidth
-            label={t("bookings.taluk")}
+            placeholder={t("bookings.taluk")}
             value={form.venueTaluk}
             onChange={handleChange("venueTaluk")}
             error={!!errors.venueTaluk}
@@ -366,7 +382,7 @@ const Bookings = () => {
         <FieldRow>
           <TextField
             fullWidth
-            label={t("bookings.district")}
+            placeholder={t("bookings.district")}
             value={form.venueDistrict}
             onChange={handleChange("venueDistrict")}
             error={!!errors.venueDistrict}
@@ -375,51 +391,55 @@ const Bookings = () => {
           <TextField
             fullWidth
             select
-            label={t("bookings.state")}
             value={form.venueState}
             onChange={handleChange("venueState")}
             size="small"
+            slotProps={{
+              select: {
+                MenuProps: selectMenuProps,
+                IconComponent: KeyboardArrowDownRoundedIcon,
+              },
+            }}
           >
             {INDIAN_STATES.map((s) => (
-              <MenuItem key={s} value={s}>{s}</MenuItem>
+              <MenuItem key={s} value={s}>
+                {s}
+              </MenuItem>
             ))}
           </TextField>
         </FieldRow>
         <TextField
           fullWidth
-          label={t("bookings.country")}
+          placeholder={t("bookings.country")}
           value={form.venueCountry}
           onChange={handleChange("venueCountry")}
           size="small"
-          sx={{ mb: 2 }}
         />
 
         <SectionLabel>
           {t("bookings.performanceDate")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
-        <TextField
-          fullWidth
-          type="date"
+        <AKDatePicker
           value={form.performanceDate}
-          onChange={handleChange("performanceDate")}
+          onChange={(val) => {
+            setForm((prev) => ({ ...prev, performanceDate: val }));
+            if (errors.performanceDate)
+              setErrors((prev) => ({ ...prev, performanceDate: false }));
+          }}
           error={!!errors.performanceDate}
-          size="small"
-          sx={{ mb: 2 }}
-          InputLabelProps={{ shrink: true }}
         />
 
         <SectionLabel>
           {t("bookings.performanceTime")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
-        <TextField
-          fullWidth
-          type="time"
+        <AKTimePicker
           value={form.performanceTime}
-          onChange={handleChange("performanceTime")}
+          onChange={(val) => {
+            setForm((prev) => ({ ...prev, performanceTime: val }));
+            if (errors.performanceTime)
+              setErrors((prev) => ({ ...prev, performanceTime: false }));
+          }}
           error={!!errors.performanceTime}
-          size="small"
-          sx={{ mb: 2 }}
-          InputLabelProps={{ shrink: true }}
         />
 
         <SectionLabel>
@@ -432,9 +452,12 @@ const Bookings = () => {
           onChange={handleChange("bookingAmount")}
           error={!!errors.bookingAmount}
           size="small"
-          sx={{ mb: 1 }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">₹</InputAdornment>,
+          slotProps={{
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">₹</InputAdornment>
+              ),
+            },
           }}
         />
         <UpiNote>{t("bookings.upiNote")}</UpiNote>
@@ -449,92 +472,72 @@ const Bookings = () => {
           onChange={handleChange("advancePaid")}
           error={!!errors.advancePaid}
           size="small"
-          sx={{ mb: 2 }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">₹</InputAdornment>,
+          slotProps={{
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">₹</InputAdornment>
+              ),
+            },
           }}
         />
 
         <SectionLabel>
           {t("bookings.screenshotLabel")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
-        <Typography
-          variant="body2"
-          sx={{ color: "var(--color-grey-400)", mb: 1, fontSize: "13px" }}
-        >
-          {t("bookings.screenshotHint")}
-        </Typography>
-        {!form.screenshot ? (
+        {form.screenshot ? (
+          <UploadedPreview>
+            <FileNameText>{form.screenshot.name}</FileNameText>
+            <RemoveFileButton onClick={removeFile} size="small">
+              <DeleteIcon />
+            </RemoveFileButton>
+          </UploadedPreview>
+        ) : (
           <UploadArea>
-            <input
+            <HiddenFileInput
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              style={{ display: "none" }}
               id="screenshot-upload"
             />
-            <label htmlFor="screenshot-upload" style={{ cursor: "pointer", textAlign: "center" }}>
-              <CloudUploadIcon sx={{ fontSize: 40, color: "var(--color-grey-400)", mb: 1 }} />
-              <Typography sx={{ color: "var(--color-grey-400)" }}>
-                {t("bookings.chooseFile")}
-              </Typography>
-            </label>
+            <UploadLabel htmlFor="screenshot-upload">
+              <UploadIcon />
+              <UploadHintText>{t("bookings.chooseFile")}</UploadHintText>
+            </UploadLabel>
           </UploadArea>
-        ) : (
-          <UploadedPreview>
-            <Typography sx={{ color: "var(--color-white)", flex: 1, overflow: "hidden", textOverflow: "ellipsis" }}>
-              {form.screenshot.name}
-            </Typography>
-            <IconButton onClick={removeFile} size="small" sx={{ color: "var(--color-grey-400)" }}>
-              <DeleteIcon />
-            </IconButton>
-          </UploadedPreview>
         )}
-        {errors.screenshot && (
-          <Typography sx={{ color: "var(--color-error)", fontSize: "12px", mt: 0.5 }}>
-            {t("bookings.required")}
-          </Typography>
-        )}
+        {errors.screenshot && <FieldError>{t("bookings.required")}</FieldError>}
 
         <SectionLabel>{t("bookings.remainingAmount")}</SectionLabel>
         <TextField
           fullWidth
-          value={remainingAmount !== "" ? `₹ ${remainingAmount}` : ""}
+          value={remainingAmount === "" ? "" : `₹ ${remainingAmount}`}
           size="small"
-          sx={{ mb: 2 }}
-          InputProps={{ readOnly: true }}
+          slotProps={{ input: { readOnly: true } }}
         />
 
-        <Box
-          sx={{
-            border: "1px solid var(--color-grey-700)",
-            borderRadius: "8px",
-            p: 2,
-            mb: 2,
-            background: "rgba(0,0,0,0.3)",
-          }}
-        >
-          <FormControlLabel
+        <TermsCheckboxWrapper>
+          <DramaFormControl
             control={
-              <Checkbox
+              <TermsCheckbox
+                hasError={!!errors.termsAccepted}
                 checked={form.termsAccepted}
                 onChange={(e) => {
-                  setForm((prev) => ({ ...prev, termsAccepted: e.target.checked }));
-                  if (errors.termsAccepted) setErrors((prev) => ({ ...prev, termsAccepted: false }));
-                }}
-                sx={{
-                  color: errors.termsAccepted ? "var(--color-error)" : "var(--color-grey-400)",
-                  "&.Mui-checked": { color: "var(--color-primary)" },
+                  setForm((prev) => ({
+                    ...prev,
+                    termsAccepted: e.target.checked,
+                  }));
+                  if (errors.termsAccepted)
+                    setErrors((prev) => ({ ...prev, termsAccepted: false }));
                 }}
               />
             }
             label={
-              <Typography sx={{ color: "var(--color-white)", fontSize: "14px" }}>
+              <TermsLabelText>
                 {t("bookings.termsCheckbox")} <RequiredStar>*</RequiredStar>
-              </Typography>
+              </TermsLabelText>
             }
           />
-        </Box>
+        </TermsCheckboxWrapper>
 
         <SectionLabel>
           {t("bookings.termsTitle")} <RequiredStar>*</RequiredStar>
@@ -560,7 +563,6 @@ const Bookings = () => {
           onChange={handleChange("directions")}
           error={!!errors.directions}
           size="small"
-          sx={{ mb: 2 }}
         />
 
         <SectionLabel>
@@ -572,12 +574,12 @@ const Bookings = () => {
           onChange={handleChange("bookerName")}
           error={!!errors.bookerName}
           size="small"
-          sx={{ mb: 2 }}
         />
 
         <SectionLabel>
           {t("bookings.signatureLabel")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
+
         <SignatureWrapper error={errors.signature}>
           <SignatureCanvas
             ref={initCanvas}
@@ -589,13 +591,9 @@ const Bookings = () => {
             onTouchMove={draw}
             onTouchEnd={endDraw}
           />
-          <Button
-            size="small"
-            onClick={clearSignature}
-            sx={{ color: "var(--color-grey-400)", position: "absolute", top: 4, right: 4, minWidth: "auto", fontSize: "12px" }}
-          >
+          <ClearSignatureButton size="small" onClick={clearSignature}>
             Clear
-          </Button>
+          </ClearSignatureButton>
         </SignatureWrapper>
 
         <Tagline>{t("bookings.tagline")}</Tagline>
@@ -611,9 +609,9 @@ const Bookings = () => {
         onClose={() => setSnackbar((p) => ({ ...p, open: false }))}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <Alert severity={snackbar.severity} variant="filled" sx={{ width: "100%" }}>
+        <StyledAlert severity={snackbar.severity} variant="filled">
           {snackbar.message}
-        </Alert>
+        </StyledAlert>
       </Snackbar>
     </FormWrapper>
   );
