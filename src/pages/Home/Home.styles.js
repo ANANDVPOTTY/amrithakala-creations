@@ -3,7 +3,9 @@ import { Box, Typography, Button } from "@mui/material";
 import { responsiveFont } from "../../theme/responsiveFont";
 import { titleReveal, fadeInUp, gradientFlow } from "../../theme/animations";
 
-export const HeroSection = styled(Box)(({ theme }) => ({
+export const HeroSection = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "bgImage" && prop !== "mobileBgImage",
+})(({ theme, bgImage, mobileBgImage }) => ({
   minHeight: "100vh",
   marginTop: "-64px",
   paddingTop: "64px",
@@ -24,6 +26,7 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     content: '""',
     position: "absolute",
     inset: 0,
+    backgroundImage: bgImage ? `url(${bgImage})` : "none",
     backgroundSize: "cover",
     backgroundPosition: "right center",
     backgroundRepeat: "no-repeat",
@@ -33,6 +36,10 @@ export const HeroSection = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("md")]: {
       backgroundPosition: "center center",
       transform: "none",
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: mobileBgImage ? `url(${mobileBgImage})` : undefined,
     },
   },
 
@@ -73,7 +80,6 @@ export const HeroContent = styled(Box)(({ theme }) => ({
   maxWidth: "840px",
   borderRadius: "16px",
   padding: "48px",
-  marginTop: "28px 0",
 
   backgroundColor: "rgba(0, 0, 0, 0.4)",
   backdropFilter: "blur(6px)",
@@ -120,6 +126,7 @@ export const HeroDescription = styled(Typography)(({ theme }) => ({
   color: "rgba(255, 255, 255, 0.85)",
   fontWeight: 400,
   lineHeight: 1.8,
+  whiteSpace: "pre-line",
   marginTop: "24px",
   animation: `${fadeInUp} 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards`,
   opacity: 0,

@@ -42,3 +42,9 @@ export const fadeInUp = keyframes`
     transform: translateY(0);
   }
 `;
+
+/*-------| Pulse — gentle scale breathing for CTA buttons |-------*/
+export const pulse = keyframes`
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+`;

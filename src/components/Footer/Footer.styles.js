@@ -5,6 +5,8 @@ import { responsivePagePadding } from "../../theme/commonStyles";
 
 export const FooterContainer = styled(Box)(({ theme }) => ({
   ...responsivePagePadding(theme),
+  position: "relative",
+  zIndex: 1,
   paddingTop: "20px",
   paddingBottom: "20px",
   backgroundColor: "var(--color-primary-darkest)",
