@@ -5,7 +5,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay, EffectCoverflow } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectCoverflow,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -21,22 +26,25 @@ import {
   GridImage,
   GridOverlay,
   GridCardTitle,
+  CarouselImage,
 } from "./Gallery.styles";
 
-import kathakali1 from "../../assets/images/gallery/kathakali-1.png";
-import chendaMelam from "../../assets/images/gallery/chenda-melam.png";
-import mohiniyattam from "../../assets/images/gallery/mohiniyattam.png";
-import theyyam from "../../assets/images/gallery/theyyam.png";
 import sopanaSangeetham from "../../assets/images/gallery/sopana-sangeetham.png";
 import dramaStage from "../../assets/images/gallery/drama-stage.png";
 import koodiyattam from "../../assets/images/gallery/koodiyattam.png";
 import fusionMusic from "../../assets/images/gallery/fusion-music.png";
 
+// Org img
+import img1 from "../../assets/akc-assets/img1.jpg";
+import img2 from "../../assets/akc-assets/img2.jpg";
+import img3 from "../../assets/akc-assets/img3.jpg";
+import img4 from "../../assets/akc-assets/img4.jpg";
+
 const galleryItems = [
-  { id: 1, src: kathakali1, titleKey: "gallery.kathakali" },
-  { id: 2, src: chendaMelam, titleKey: "gallery.chendaMelam" },
-  { id: 3, src: mohiniyattam, titleKey: "gallery.mohiniyattam" },
-  { id: 4, src: theyyam, titleKey: "gallery.theyyam" },
+  { id: 1, src: img1, titleKey: "gallery.stageCurtain" },
+  { id: 2, src: img2, titleKey: "gallery.felicitation" },
+  { id: 3, src: img3, titleKey: "gallery.inauguration" },
+  { id: 4, src: img4, titleKey: "gallery.team" },
   { id: 5, src: sopanaSangeetham, titleKey: "gallery.sopanaSangeetham" },
   { id: 6, src: dramaStage, titleKey: "gallery.dramaStage" },
   { id: 7, src: koodiyattam, titleKey: "gallery.koodiyattam" },
@@ -88,14 +96,16 @@ const Gallery = () => {
           {galleryItems.map((item, idx) => (
             <SwiperSlide
               key={item.id}
-              style={{ width: "60%", maxWidth: "700px", borderRadius: "16px", overflow: "hidden", cursor: "pointer" }}
+              style={{
+                width: "60%",
+                maxWidth: "700px",
+                borderRadius: "16px",
+                overflow: "hidden",
+                cursor: "pointer",
+              }}
               onClick={() => openLightbox(idx)}
             >
-              <img
-                src={item.src}
-                alt={t(item.titleKey)}
-                style={{ width: "100%", height: "auto", display: "block", borderRadius: "16px" }}
-              />
+              <CarouselImage src={item.src} alt={t(item.titleKey)} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -150,30 +160,72 @@ const Gallery = () => {
       >
         <IconButton
           onClick={closeLightbox}
-          sx={{ position: "absolute", top: 8, right: 8, color: "white", zIndex: 2 }}
+          sx={{
+            position: "absolute",
+            top: 8,
+            right: 8,
+            color: "white",
+            zIndex: 2,
+          }}
         >
           <CloseIcon />
         </IconButton>
         <IconButton
           onClick={prevImage}
-          sx={{ position: "absolute", left: 8, top: "50%", transform: "translateY(-50%)", color: "white", zIndex: 2, bgcolor: "rgba(0,0,0,0.4)", "&:hover": { bgcolor: "rgba(0,0,0,0.6)" } }}
+          sx={{
+            position: "absolute",
+            left: 8,
+            top: "50%",
+            transform: "translateY(-50%)",
+            color: "white",
+            zIndex: 2,
+            bgcolor: "rgba(0,0,0,0.4)",
+            "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+          }}
         >
           <ArrowBackIosNewIcon />
         </IconButton>
         <IconButton
           onClick={nextImage}
-          sx={{ position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)", color: "white", zIndex: 2, bgcolor: "rgba(0,0,0,0.4)", "&:hover": { bgcolor: "rgba(0,0,0,0.6)" } }}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: "50%",
+            transform: "translateY(-50%)",
+            color: "white",
+            zIndex: 2,
+            bgcolor: "rgba(0,0,0,0.4)",
+            "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+          }}
         >
           <ArrowForwardIosIcon />
         </IconButton>
         {lightbox.open && (
-          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
             <img
               src={galleryItems[lightbox.index].src}
               alt={t(galleryItems[lightbox.index].titleKey)}
-              style={{ maxWidth: "85vw", maxHeight: "80vh", objectFit: "contain" }}
+              style={{
+                maxWidth: "85vw",
+                maxHeight: "80vh",
+                objectFit: "contain",
+              }}
             />
-            <Typography sx={{ color: "white", mt: 2, mb: 1, fontSize: "16px", fontWeight: 500 }}>
+            <Typography
+              sx={{
+                color: "white",
+                mt: 2,
+                mb: 1,
+                fontSize: "16px",
+                fontWeight: 500,
+              }}
+            >
               {t(galleryItems[lightbox.index].titleKey)}
             </Typography>
           </Box>

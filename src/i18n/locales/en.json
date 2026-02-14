@@ -92,7 +92,11 @@
     "sopanaSangeetham": "Sopana Sangeetham",
     "dramaStage": "Drama Stage",
     "koodiyattam": "Koodiyattam",
-    "fusionMusic": "Fusion Music"
+    "fusionMusic": "Fusion Music",
+    "stageCurtain": "Amrithakala Stage",
+    "felicitation": "Felicitation Ceremony",
+    "inauguration": "Inaugural Ceremony",
+    "team": "Team Amrithakala"
   },
   "footer": {
     "copyright": "© {{year}} Amrithakala Creations. All rights reserved.",

@@ -117,6 +117,15 @@ export const CarouselSection = styled(Box)(() => ({
   },
 }));
 
+export const CarouselImage = styled("img")(() => ({
+  width: "100%",
+  height: "100%",
+  aspectRatio: "16 / 9",
+  objectFit: "cover",
+  display: "block",
+  borderRadius: "16px",
+}));
+
 export const SectionTitle = styled(Typography)(() => ({
   fontSize: "28px",
   color: "var(--color-white)",

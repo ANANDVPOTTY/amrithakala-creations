@@ -92,7 +92,11 @@
     "sopanaSangeetham": "സോപാന സംഗീതം",
     "dramaStage": "നാടക അരങ്ങ്",
     "koodiyattam": "കൂടിയാട്ടം",
-    "fusionMusic": "ഫ്യൂഷൻ മ്യൂസിക്"
+    "fusionMusic": "ഫ്യൂഷൻ മ്യൂസിക്",
+    "stageCurtain": "അമൃതകല വേദി",
+    "felicitation": "ആദരം",
+    "inauguration": "ഉദ്ഘാടന ചടങ്ങ്",
+    "team": "ടീം അമൃതകല"
   },
   "footer": {
     "copyright": "© {{year}} അമൃതകല ക്രിയേഷൻസ്. എല്ലാ അവകാശങ്ങളും സംരക്ഷിതം.",
