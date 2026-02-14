@@ -7,6 +7,7 @@ import AKDatePicker from "../../components/DateTimePicker/AKDatePicker";
 import AKTimePicker from "../../components/DateTimePicker/AKTimePicker";
 import {
   FormWrapper,
+  PageTitle,
   FormCard,
   FormTitle,
   SectionLabel,
@@ -36,8 +37,8 @@ import {
   TermsLabelText,
   StyledAlert,
 } from "./Bookings.styles";
-import bookingBgImage from "../../assets/images/booking-bg.png";
-import bookingMobileBgImage from "../../assets/images/booking-mobile-bg.jpg";
+import bookingBgImage from "../../assets/backgrounds/booking-bg.png";
+import bookingMobileBgImage from "../../assets/backgrounds/booking-mobile-bg.jpg";
 import { INDIAN_STATES } from "../../data/indianStates";
 import selectMenuProps from "../../theme/selectMenuProps";
 
@@ -222,9 +223,12 @@ const Bookings = () => {
 
   return (
     <FormWrapper bgImage={bookingBgImage} mobileBgImage={bookingMobileBgImage}>
+      <PageTitle>{t("bookings.title")}</PageTitle>
+
       <FormCard component="form" onSubmit={handleSubmit} noValidate>
         <FormTitle>{t("bookings.formTitle")}</FormTitle>
 
+        {/*-------| Booker Name |-------*/}
         <SectionLabel>
           {t("bookings.bookerName")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -247,6 +251,7 @@ const Bookings = () => {
           />
         </FieldRow>
 
+        {/*-------| Booker Address |-------*/}
         <SectionLabel>
           {t("bookings.bookerAddress")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -312,6 +317,7 @@ const Bookings = () => {
           size="small"
         />
 
+        {/*-------| Phone |-------*/}
         <SectionLabel>
           {t("bookings.phoneLabel")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -331,6 +337,7 @@ const Bookings = () => {
           }}
         />
 
+        {/*-------| Agent |-------*/}
         <SectionLabel>{t("bookings.agentLabel")}</SectionLabel>
         <TextField
           fullWidth
@@ -340,6 +347,7 @@ const Bookings = () => {
           size="small"
         />
 
+        {/*-------| Drama Selection |-------*/}
         <SectionLabel>
           {t("bookings.dramaLabel")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -358,6 +366,7 @@ const Bookings = () => {
           label={t("bookings.dramaName")}
         />
 
+        {/*-------| Venue Address |-------*/}
         <SectionLabel>
           {t("bookings.venueAddress")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -416,6 +425,7 @@ const Bookings = () => {
           size="small"
         />
 
+        {/*-------| Performance Date & Time |-------*/}
         <SectionLabel>
           {t("bookings.performanceDate")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -442,6 +452,7 @@ const Bookings = () => {
           error={!!errors.performanceTime}
         />
 
+        {/*-------| Payment Details |-------*/}
         <SectionLabel>
           {t("bookings.bookingAmount")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -481,6 +492,7 @@ const Bookings = () => {
           }}
         />
 
+        {/*-------| Screenshot Upload |-------*/}
         <SectionLabel>
           {t("bookings.screenshotLabel")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -507,6 +519,7 @@ const Bookings = () => {
         )}
         {errors.screenshot && <FieldError>{t("bookings.required")}</FieldError>}
 
+        {/*-------| Remaining Amount |-------*/}
         <SectionLabel>{t("bookings.remainingAmount")}</SectionLabel>
         <TextField
           fullWidth
@@ -515,6 +528,7 @@ const Bookings = () => {
           slotProps={{ input: { readOnly: true } }}
         />
 
+        {/*-------| Terms & Conditions |-------*/}
         <TermsCheckboxWrapper>
           <DramaFormControl
             control={
@@ -552,6 +566,7 @@ const Bookings = () => {
           <TermItem>7. {t("bookings.term7")}</TermItem>
         </TermsBox>
 
+        {/*-------| Directions |-------*/}
         <SectionLabel>
           {t("bookings.directionsLabel")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -565,6 +580,7 @@ const Bookings = () => {
           size="small"
         />
 
+        {/*-------| Confirm Booker Name |-------*/}
         <SectionLabel>
           {t("bookings.confirmBookerName")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -576,6 +592,7 @@ const Bookings = () => {
           size="small"
         />
 
+        {/*-------| Signature |-------*/}
         <SectionLabel>
           {t("bookings.signatureLabel")} <RequiredStar>*</RequiredStar>
         </SectionLabel>
@@ -596,6 +613,7 @@ const Bookings = () => {
           </ClearSignatureButton>
         </SignatureWrapper>
 
+        {/*-------| Submit |-------*/}
         <Tagline>{t("bookings.tagline")}</Tagline>
 
         <SubmitButton type="submit" variant="contained" fullWidth>
@@ -603,6 +621,7 @@ const Bookings = () => {
         </SubmitButton>
       </FormCard>
 
+      {/*-------| Snackbar Notification |-------*/}
       <Snackbar
         open={snackbar.open}
         autoHideDuration={4000}

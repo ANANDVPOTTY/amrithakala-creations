@@ -1,5 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
+import { fadeInUp, scaleReveal } from "../../theme/animations";
+import { responsiveFont } from "../../theme/responsiveFont";
 
 export const GalleryWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== "bgImage" && prop !== "mobileBgImage",
@@ -79,6 +81,8 @@ export const CarouselSection = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  opacity: 0,
+  animation: `${fadeInUp} 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards`,
 
   "& .swiper-button-next, & .swiper-button-prev": {
     color: "var(--color-white)",
@@ -117,14 +121,25 @@ export const CarouselSection = styled(Box)(() => ({
   },
 }));
 
-export const SectionTitle = styled(Typography)(() => ({
-  fontSize: "28px",
+export const CarouselImage = styled("img")(() => ({
+  width: "100%",
+  height: "100%",
+  aspectRatio: "16 / 9",
+  objectFit: "cover",
+  display: "block",
+  borderRadius: "16px",
+}));
+
+export const SectionTitle = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "28px"),
   color: "var(--color-white)",
   fontWeight: 700,
   fontFamily: "var(--font-special)",
   marginBottom: "32px",
   textAlign: "center",
   position: "relative",
+  opacity: 0,
+  animation: `${fadeInUp} 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards`,
   "&::after": {
     content: '""',
     display: "block",
@@ -134,11 +149,6 @@ export const SectionTitle = styled(Typography)(() => ({
     margin: "12px auto 0",
     borderRadius: "2px",
   },
-
-  "@media (max-width: 600px)": {
-    fontSize: "22px",
-    marginBottom: "24px",
-  },
 }));
 
 export const GridSection = styled(Box)(() => ({
@@ -146,6 +156,8 @@ export const GridSection = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  opacity: 0,
+  animation: `${fadeInUp} 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards`,
 }));
 
 export const GridCard = styled(Box)(() => ({
@@ -155,6 +167,18 @@ export const GridCard = styled(Box)(() => ({
   cursor: "pointer",
   aspectRatio: "4/3",
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  opacity: 0,
+  animation: `${scaleReveal} 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards`,
+
+  "&:nth-of-type(1)": { animationDelay: "0.6s" },
+  "&:nth-of-type(2)": { animationDelay: "0.7s" },
+  "&:nth-of-type(3)": { animationDelay: "0.8s" },
+  "&:nth-of-type(4)": { animationDelay: "0.9s" },
+  "&:nth-of-type(5)": { animationDelay: "1.0s" },
+  "&:nth-of-type(6)": { animationDelay: "1.1s" },
+  "&:nth-of-type(7)": { animationDelay: "1.2s" },
+  "&:nth-of-type(8)": { animationDelay: "1.3s" },
+
   "&:hover": {
     transform: "translateY(-4px)",
     boxShadow: "0 12px 30px rgba(195, 17, 12, 0.25)",
@@ -186,9 +210,9 @@ export const GridOverlay = styled(Box)(() => ({
   transition: "opacity 0.3s ease",
 }));
 
-export const GridCardTitle = styled(Typography)(() => ({
+export const GridCardTitle = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "16px"),
   color: "var(--color-white)",
-  fontSize: "15px",
   fontWeight: 600,
   textShadow: "0 1px 3px rgba(0,0,0,0.5)",
 }));

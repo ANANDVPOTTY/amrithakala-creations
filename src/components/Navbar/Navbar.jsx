@@ -17,8 +17,7 @@ import {
   DrawerDivider,
   DrawerBottomSection,
 } from "./Navbar.styles";
-import logo from "../../assets/images/akTextLogo.png";
-// import logo from "../../assets/images/logo.png";
+import logo from "../../assets/logos/text-logo.png";
 
 const menuItems = [
   { labelKey: "nav.aboutUs", path: "/about-us" },

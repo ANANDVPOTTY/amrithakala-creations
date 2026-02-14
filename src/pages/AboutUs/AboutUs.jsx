@@ -49,20 +49,20 @@ import {
   MapWrapper,
 } from "./AboutUs.styles";
 
-import galleryBgImage from "../../assets/images/gallery-bg.jpg";
-import pic2 from "../../assets/akc-assets/owner-pics/pic2.jpg";
-import pic5 from "../../assets/akc-assets/owner-pics/pic5.jpg";
-import natakamImg from "../../assets/akc-assets/natakam1.png";
-import ctaVideo from "../../assets/akc-assets/videos/VID-20260214-WA0020.mp4";
+import galleryBgImage from "../../assets/backgrounds/gallery-bg.jpg";
+import pic2 from "../../assets/owner/pic2.jpg";
+import pic5 from "../../assets/owner/pic5.jpg";
+import natakamImg from "../../assets/posters/natakam.png";
+import ctaVideo from "../../assets/videos/cta-video.mp4";
 
-import kathakali from "../../assets/images/gallery/kathakali-1.png";
-import chendaMelam from "../../assets/images/gallery/chenda-melam.png";
-import mohiniyattam from "../../assets/images/gallery/mohiniyattam.png";
-import theyyam from "../../assets/images/gallery/theyyam.png";
-import sopanaSangeetham from "../../assets/images/gallery/sopana-sangeetham.png";
-import dramaStage from "../../assets/images/gallery/drama-stage.png";
-import koodiyattam from "../../assets/images/gallery/koodiyattam.png";
-import fusionMusic from "../../assets/images/gallery/fusion-music.png";
+import kathakali from "../../assets/gallery/kathakali.png";
+import chendaMelam from "../../assets/gallery/chenda-melam.png";
+import mohiniyattam from "../../assets/gallery/mohiniyattam.png";
+import theyyam from "../../assets/gallery/theyyam.png";
+import sopanaSangeetham from "../../assets/gallery/sopana-sangeetham.png";
+import dramaStage from "../../assets/gallery/drama-stage.png";
+import koodiyattam from "../../assets/gallery/koodiyattam.png";
+import fusionMusic from "../../assets/gallery/fusion-music.png";
 
 const artForms = [
   { id: 1, src: kathakali, titleKey: "gallery.kathakali" },
@@ -159,6 +159,7 @@ const AboutUs = () => {
           <MuteToggle onClick={toggleMute}>
             {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
           </MuteToggle>
+
           <CtaContent>
             <CtaButton component={Link} to="/bookings">
               {t("aboutUs.ctaButton")}
@@ -198,11 +199,7 @@ const AboutUs = () => {
               >
                 <InstagramIcon />
               </SocialLink>
-              <SocialLink
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <SocialLink href="#" target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon />
               </SocialLink>
               <SocialLink
@@ -231,7 +228,7 @@ const AboutUs = () => {
 
           <MapWrapper>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.5!2d76.5741!3d9.3816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0621ec0e0e0001%3A0x1234567890abcdef!2sThottabhagam%2C%20Thiruvalla%2C%20Kerala%20689541!5e0!3m2!1sen!2sin!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.5!2d76.5741!3d9.3816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0625006d55cfb3%3A0xdd0845f3e4830ca0!2sAmrithakala%20school%20of%20performing%20arts%2C%20Thottabhagom%2C%20Thiruvalla%2C%20Kerala%20689541!5e0!3m2!1sen!2sin!4v1700000000000"
               title={t("aboutUs.locationLabel")}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

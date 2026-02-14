@@ -9,8 +9,8 @@ import {
   PrimaryButton,
   SecondaryButton,
 } from "./Home.styles";
-import homeBgImage from "../../assets/images/homeBgImage.png";
-import mobileBgImage from "../../assets/images/mobile-bg.png";
+import homeBgImage from "../../assets/backgrounds/home-bg.png";
+import mobileBgImage from "../../assets/backgrounds/home-mobile-bg.png";
 
 const Home = () => {
   const { t } = useTranslation();
