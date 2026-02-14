@@ -32,6 +32,7 @@ import {
   UploadArea,
   UploadedPreview,
 } from "./Bookings.styles";
+import bookingBgImage from "../../assets/images/booking-bg.png";
 
 const INDIAN_STATES = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -208,7 +209,13 @@ const Bookings = () => {
   };
 
   return (
-    <FormWrapper>
+    <FormWrapper
+      sx={{
+        "&::before": {
+          backgroundImage: `url(${bookingBgImage})`,
+        },
+      }}
+    >
       <FormCard component="form" onSubmit={handleSubmit} noValidate>
         <FormTitle>{t("bookings.formTitle")}</FormTitle>
 

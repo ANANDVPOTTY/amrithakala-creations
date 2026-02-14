@@ -1,43 +1,81 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography, Button } from "@mui/material";
-import bookingsBg from "../../assets/images/bookingsBg.png";
 
-export const FormWrapper = styled(Box)(() => ({
+export const FormWrapper = styled(Box)(({ theme }) => ({
   minHeight: "100vh",
+  marginTop: "-64px",
+  paddingTop: "100px",
+  paddingBottom: "60px",
   display: "flex",
   justifyContent: "center",
-  padding: "100px 16px 60px",
-  backgroundImage: `url(${bookingsBg})`,
-  backgroundSize: "100% 100%",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundAttachment: "fixed",
   position: "relative",
+  isolation: "isolate",
+
+  marginLeft: "-15rem",
+  marginRight: "-15rem",
+  paddingLeft: "15rem",
+  paddingRight: "15rem",
+
   "&::before": {
     content: '""',
     position: "absolute",
     inset: 0,
-    background: "rgba(0, 0, 0, 0.65)",
-    zIndex: 0,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    zIndex: -2,
   },
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.65)",
+  },
+
   "& > *": {
     position: "relative",
     zIndex: 1,
+  },
+
+  [theme.breakpoints.down("lg")]: {
+    marginLeft: "-80px",
+    marginRight: "-80px",
+    paddingLeft: "80px",
+    paddingRight: "80px",
+  },
+
+  [theme.breakpoints.down("md")]: {
+    marginLeft: "-40px",
+    marginRight: "-40px",
+    paddingLeft: "40px",
+    paddingRight: "40px",
+  },
+
+  [theme.breakpoints.down("sm")]: {
+    marginLeft: "-20px",
+    marginRight: "-20px",
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    minHeight: "100svh",
   },
 }));
 
 export const FormCard = styled(Box)(() => ({
   width: "100%",
   maxWidth: "720px",
-  background: "rgba(30, 30, 30, 0.95)",
-  border: "1px solid var(--color-grey-800)",
   borderRadius: "16px",
   padding: "40px 36px",
-  boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+  backgroundColor: "rgba(0, 0, 0, 0.4)",
+  backdropFilter: "blur(6px)",
+  WebkitBackdropFilter: "blur(6px)",
+  border: "1px solid rgba(255, 255, 255, 0.09)",
 
   "& .MuiTextField-root": {
     marginBottom: "8px",
   },
+
   "& .MuiOutlinedInput-root": {
     color: "var(--color-white)",
     fontFamily: "var(--font-active)",
@@ -176,7 +214,8 @@ export const Tagline = styled(Typography)(() => ({
 }));
 
 export const SubmitButton = styled(Button)(() => ({
-  background: "linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)",
+  background:
+    "linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)",
   color: "var(--color-white)",
   fontFamily: "var(--font-active)",
   fontSize: "16px",
@@ -185,7 +224,8 @@ export const SubmitButton = styled(Button)(() => ({
   borderRadius: "8px",
   textTransform: "none",
   "&:hover": {
-    background: "linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%)",
+    background:
+      "linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%)",
   },
 }));
 
