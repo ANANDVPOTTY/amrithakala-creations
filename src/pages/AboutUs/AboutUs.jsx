@@ -49,20 +49,20 @@ import {
   MapWrapper,
 } from "./AboutUs.styles";
 
-import galleryBgImage from "../../assets/images/gallery-bg.jpg";
-import pic2 from "../../assets/akc-assets/owner-pics/pic2.jpg";
-import pic5 from "../../assets/akc-assets/owner-pics/pic5.jpg";
-import natakamImg from "../../assets/akc-assets/natakam1.png";
-import ctaVideo from "../../assets/akc-assets/videos/VID-20260214-WA0020.mp4";
+import galleryBgImage from "../../assets/backgrounds/gallery-bg.jpg";
+import pic2 from "../../assets/owner/pic2.jpg";
+import pic5 from "../../assets/owner/pic5.jpg";
+import natakamImg from "../../assets/posters/natakam.png";
+import ctaVideo from "../../assets/videos/cta-video.mp4";
 
-import kathakali from "../../assets/images/gallery/kathakali-1.png";
-import chendaMelam from "../../assets/images/gallery/chenda-melam.png";
-import mohiniyattam from "../../assets/images/gallery/mohiniyattam.png";
-import theyyam from "../../assets/images/gallery/theyyam.png";
-import sopanaSangeetham from "../../assets/images/gallery/sopana-sangeetham.png";
-import dramaStage from "../../assets/images/gallery/drama-stage.png";
-import koodiyattam from "../../assets/images/gallery/koodiyattam.png";
-import fusionMusic from "../../assets/images/gallery/fusion-music.png";
+import kathakali from "../../assets/gallery/kathakali.png";
+import chendaMelam from "../../assets/gallery/chenda-melam.png";
+import mohiniyattam from "../../assets/gallery/mohiniyattam.png";
+import theyyam from "../../assets/gallery/theyyam.png";
+import sopanaSangeetham from "../../assets/gallery/sopana-sangeetham.png";
+import dramaStage from "../../assets/gallery/drama-stage.png";
+import koodiyattam from "../../assets/gallery/koodiyattam.png";
+import fusionMusic from "../../assets/gallery/fusion-music.png";
 
 const artForms = [
   { id: 1, src: kathakali, titleKey: "gallery.kathakali" },

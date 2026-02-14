@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import bigLogo from "../../assets/images/logo.png";
+import bigLogo from "../../assets/logos/logo.png";
 import {
   FooterContainer,
   LogoSection,

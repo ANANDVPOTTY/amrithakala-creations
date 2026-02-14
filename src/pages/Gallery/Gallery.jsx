@@ -16,7 +16,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 
-import galleryBgImage from "../../assets/images/gallery-bg.jpg";
+import galleryBgImage from "../../assets/backgrounds/gallery-bg.jpg";
 import {
   GalleryWrapper,
   CarouselSection,
@@ -29,22 +29,20 @@ import {
   CarouselImage,
 } from "./Gallery.styles";
 
-import sopanaSangeetham from "../../assets/images/gallery/sopana-sangeetham.png";
-import dramaStage from "../../assets/images/gallery/drama-stage.png";
-import koodiyattam from "../../assets/images/gallery/koodiyattam.png";
-import fusionMusic from "../../assets/images/gallery/fusion-music.png";
-
-// Org img
-import img1 from "../../assets/akc-assets/img1.jpg";
-import img2 from "../../assets/akc-assets/img2.jpg";
-import img3 from "../../assets/akc-assets/img3.jpg";
-import img4 from "../../assets/akc-assets/img4.jpg";
+import stageCurtain from "../../assets/gallery/stage-curtain.jpg";
+import felicitation from "../../assets/gallery/felicitation.jpg";
+import inauguration from "../../assets/gallery/inauguration.jpg";
+import team from "../../assets/gallery/team.jpg";
+import sopanaSangeetham from "../../assets/gallery/sopana-sangeetham.png";
+import dramaStage from "../../assets/gallery/drama-stage.png";
+import koodiyattam from "../../assets/gallery/koodiyattam.png";
+import fusionMusic from "../../assets/gallery/fusion-music.png";
 
 const galleryItems = [
-  { id: 1, src: img1, titleKey: "gallery.stageCurtain" },
-  { id: 2, src: img2, titleKey: "gallery.felicitation" },
-  { id: 3, src: img3, titleKey: "gallery.inauguration" },
-  { id: 4, src: img4, titleKey: "gallery.team" },
+  { id: 1, src: stageCurtain, titleKey: "gallery.stageCurtain" },
+  { id: 2, src: felicitation, titleKey: "gallery.felicitation" },
+  { id: 3, src: inauguration, titleKey: "gallery.inauguration" },
+  { id: 4, src: team, titleKey: "gallery.team" },
   { id: 5, src: sopanaSangeetham, titleKey: "gallery.sopanaSangeetham" },
   { id: 6, src: dramaStage, titleKey: "gallery.dramaStage" },
   { id: 7, src: koodiyattam, titleKey: "gallery.koodiyattam" },

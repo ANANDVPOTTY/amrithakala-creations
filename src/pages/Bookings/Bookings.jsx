@@ -36,8 +36,8 @@ import {
   TermsLabelText,
   StyledAlert,
 } from "./Bookings.styles";
-import bookingBgImage from "../../assets/images/booking-bg.png";
-import bookingMobileBgImage from "../../assets/images/booking-mobile-bg.jpg";
+import bookingBgImage from "../../assets/backgrounds/booking-bg.png";
+import bookingMobileBgImage from "../../assets/backgrounds/booking-mobile-bg.jpg";
 import { INDIAN_STATES } from "../../data/indianStates";
 import selectMenuProps from "../../theme/selectMenuProps";
 
