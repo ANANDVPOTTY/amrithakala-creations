@@ -9,6 +9,7 @@ import {
   Alert,
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { responsiveFont } from "../../theme/responsiveFont";
 
 export const FormWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== "bgImage" && prop !== "mobileBgImage",
@@ -18,7 +19,8 @@ export const FormWrapper = styled(Box, {
   paddingTop: "100px",
   paddingBottom: "60px",
   display: "flex",
-  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
   position: "relative",
   isolation: "isolate",
 
@@ -76,6 +78,26 @@ export const FormWrapper = styled(Box, {
     paddingLeft: "20px",
     paddingRight: "20px",
     minHeight: "100svh",
+  },
+}));
+
+export const PageTitle = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "28px"),
+  fontFamily: "var(--font-special)",
+  color: "var(--color-white)",
+  fontWeight: 700,
+  marginBottom: "32px",
+  textAlign: "center",
+  position: "relative",
+
+  "&::after": {
+    content: '""',
+    display: "block",
+    width: "60px",
+    height: "3px",
+    background: "var(--color-primary)",
+    margin: "12px auto 0",
+    borderRadius: "2px",
   },
 }));
 
@@ -171,44 +193,35 @@ export const FormCard = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const FormTitle = styled(Typography)(() => ({
+export const FormTitle = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "24px"),
   color: "var(--color-white)",
-  fontSize: "24px",
   fontWeight: 700,
   textAlign: "center",
   marginBottom: "40px",
   lineHeight: 1.5,
-
-  "@media (max-width: 600px)": {
-    fontSize: "18px",
-    marginBottom: "32px",
-  },
 }));
 
-export const SectionLabel = styled(Typography)(() => ({
+export const SectionLabel = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "16px"),
   color: "var(--color-white)",
-  fontSize: "15px",
   fontWeight: 600,
   marginBottom: "12px",
   marginTop: "24px",
   display: "flex",
   alignItems: "center",
   gap: "4px",
-
-  "@media (max-width: 600px)": {
-    fontSize: "14px",
-  },
 }));
 
-export const RequiredStar = styled("span")(() => ({
+export const RequiredStar = styled("span")(({ theme }) => ({
+  ...responsiveFont(theme, "16px"),
   color: "var(--color-error)",
-  fontSize: "16px",
   fontWeight: 700,
 }));
 
-export const UpiNote = styled(Typography)(() => ({
+export const UpiNote = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "14px"),
   color: "var(--color-grey-400)",
-  fontSize: "13px",
   fontWeight: 500,
   marginBottom: "16px",
   padding: "8px 12px",
@@ -227,9 +240,9 @@ export const TermsBox = styled(Box)(() => ({
   overflowY: "auto",
 }));
 
-export const TermItem = styled(Typography)(() => ({
+export const TermItem = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "14px"),
   color: "var(--color-grey-300)",
-  fontSize: "13px",
   lineHeight: 1.8,
   marginBottom: "8px",
   whiteSpace: "pre-line",
@@ -251,13 +264,13 @@ export const SignatureWrapper = styled(Box, {
   background: "rgba(0,0,0,0.3)",
 }));
 
-export const ClearSignatureButton = styled(Button)(() => ({
+export const ClearSignatureButton = styled(Button)(({ theme }) => ({
+  ...responsiveFont(theme, "12px"),
   color: "var(--color-grey-400)",
   position: "absolute",
   top: 4,
   right: 4,
   minWidth: "auto",
-  fontSize: "12px",
 }));
 
 export const SignatureCanvas = styled("canvas")(() => ({
@@ -268,25 +281,21 @@ export const SignatureCanvas = styled("canvas")(() => ({
   touchAction: "none",
 }));
 
-export const Tagline = styled(Typography)(() => ({
-  fontSize: "18px",
+export const Tagline = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "18px"),
   color: "var(--color-primary-light)",
   fontFamily: "var(--font-special)",
   fontWeight: 700,
   textAlign: "center",
   marginBottom: "32px",
   fontStyle: "italic",
-
-  "@media (max-width: 600px)": {
-    fontSize: "16px",
-  },
 }));
 
-export const SubmitButton = styled(Button)(() => ({
+export const SubmitButton = styled(Button)(({ theme }) => ({
+  ...responsiveFont(theme, "16px"),
   background: "var(--color-success)",
   color: "var(--color-white)",
   fontFamily: "var(--font-active)",
-  fontSize: "16px",
   fontWeight: 500,
   padding: "12px",
   borderRadius: "8px",
@@ -370,9 +379,9 @@ export const RemoveFileButton = styled(IconButton)(() => ({
   color: "var(--color-grey-400)",
 }));
 
-export const FieldError = styled(Typography)(() => ({
+export const FieldError = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "12px"),
   color: "var(--color-error)",
-  fontSize: "12px",
   marginTop: "4px",
 }));
 
@@ -400,9 +409,9 @@ export const TermsCheckbox = styled(Checkbox, {
   "&.Mui-checked": { color: "var(--color-primary)" },
 }));
 
-export const TermsLabelText = styled(Typography)(() => ({
+export const TermsLabelText = styled(Typography)(({ theme }) => ({
+  ...responsiveFont(theme, "14px"),
   color: "var(--color-white)",
-  fontSize: "14px",
 }));
 
 export const StyledAlert = styled(Alert)(() => ({
