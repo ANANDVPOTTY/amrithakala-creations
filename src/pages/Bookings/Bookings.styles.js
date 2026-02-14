@@ -11,8 +11,8 @@ import {
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 export const FormWrapper = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "bgImage",
-})(({ theme, bgImage }) => ({
+  shouldForwardProp: (prop) => prop !== "bgImage" && prop !== "mobileBgImage",
+})(({ theme, bgImage, mobileBgImage }) => ({
   minHeight: "100vh",
   marginTop: "-64px",
   paddingTop: "100px",
@@ -37,6 +37,11 @@ export const FormWrapper = styled(Box, {
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
     zIndex: -2,
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: mobileBgImage ? `url(${mobileBgImage})` : undefined,
+      backgroundAttachment: "scroll",
+      position: "fixed",
+    },
   },
 
   "&::after": {
@@ -74,9 +79,9 @@ export const FormWrapper = styled(Box, {
   },
 }));
 
-export const FormCard = styled(Box)(() => ({
+export const FormCard = styled(Box)(({ theme }) => ({
   width: "100%",
-  maxWidth: "720px",
+  maxWidth: "920px",
   borderRadius: "16px",
   padding: "48px 40px",
   backgroundColor: "rgba(0, 0, 0, 0.4)",
@@ -107,6 +112,7 @@ export const FormCard = styled(Box)(() => ({
       borderColor: "var(--color-error)",
     },
   },
+
   "& .MuiInputAdornment-root": {
     color: "var(--color-white)",
   },
@@ -153,6 +159,15 @@ export const FormCard = styled(Box)(() => ({
   "@media (max-width: 600px)": {
     padding: "24px 16px",
     borderRadius: "12px",
+  },
+
+  [theme.breakpoints.down("sm")]: {
+    padding: "28px",
+    borderRadius: "12px",
+    backgroundColor: "rgba(0, 0, 0, 0.15)",
+    backdropFilter: "blur(2px)",
+    WebkitBackdropFilter: "blur(2px)",
+    border: "1px solid rgba(255, 255, 255, 0.03)",
   },
 }));
 
@@ -343,12 +358,6 @@ export const UploadHintText = styled(Typography)(() => ({
   color: "var(--color-grey-400)",
 }));
 
-export const ScreenshotHint = styled(Typography)(() => ({
-  color: "var(--color-grey-400)",
-  marginBottom: "8px",
-  fontSize: "13px",
-}));
-
 export const FileNameText = styled(Typography)(() => ({
   color: "var(--color-white)",
   flex: 1,
@@ -397,4 +406,5 @@ export const TermsLabelText = styled(Typography)(() => ({
 
 export const StyledAlert = styled(Alert)(() => ({
   width: "100%",
+  textAlign: "center",
 }));

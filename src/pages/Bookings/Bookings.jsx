@@ -26,7 +26,6 @@ import {
   UploadLabel,
   UploadIcon,
   UploadHintText,
-  ScreenshotHint,
   FileNameText,
   RemoveFileButton,
   FieldError,
@@ -38,6 +37,7 @@ import {
   StyledAlert,
 } from "./Bookings.styles";
 import bookingBgImage from "../../assets/images/booking-bg.png";
+import bookingMobileBgImage from "../../assets/images/booking-mobile-bg.jpg";
 import { INDIAN_STATES } from "../../data/indianStates";
 import selectMenuProps from "../../theme/selectMenuProps";
 
@@ -221,7 +221,7 @@ const Bookings = () => {
   };
 
   return (
-    <FormWrapper bgImage={bookingBgImage}>
+    <FormWrapper bgImage={bookingBgImage} mobileBgImage={bookingMobileBgImage}>
       <FormCard component="form" onSubmit={handleSubmit} noValidate>
         <FormTitle>{t("bookings.formTitle")}</FormTitle>
 
