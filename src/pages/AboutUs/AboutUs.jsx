@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { FaSpotify, FaApple } from "react-icons/fa";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import {
   AboutUsWrapper,
   HeroTitle,
@@ -39,6 +44,8 @@ import {
   ContactText,
   ContactPhoneList,
   ContactPhone,
+  SocialLinks,
+  SocialLink,
   MapWrapper,
 } from "./AboutUs.styles";
 
@@ -175,6 +182,51 @@ const AboutUs = () => {
               <ContactPhone href="tel:+918086199787">8086199787</ContactPhone>
               <ContactPhone href="tel:+917907972687">7907972687</ContactPhone>
             </ContactPhoneList>
+
+            <SocialLinks>
+              <SocialLink
+                href="https://www.facebook.com/share/1ASXWwCaLb/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FacebookIcon />
+              </SocialLink>
+              <SocialLink
+                href="https://www.instagram.com/sivakumaramrithakala?igsh=MTdqY2tneTA3bDl0cg=="
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <InstagramIcon />
+              </SocialLink>
+              <SocialLink
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <WhatsAppIcon />
+              </SocialLink>
+              <SocialLink
+                href="https://open.spotify.com/artist/5MIiN99jP17ZYbq8wPmUfp?si=rMLsZ3nDSBuM2rd1Fz1UpA"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaSpotify />
+              </SocialLink>
+              <SocialLink
+                href="https://music.apple.com/in/artist/sivakumar-amrithakala/1535794331"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaApple />
+              </SocialLink>
+              <SocialLink
+                href="https://www.saavn.com/s/artist/sivakumar-amrithakala-albums/CG2ApemPqdQ_"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MusicNoteIcon />
+              </SocialLink>
+            </SocialLinks>
           </ContactCard>
 
           <MapWrapper>

@@ -560,6 +560,37 @@ export const ContactPhone = styled("a")(({ theme }) => ({
   },
 }));
 
+export const SocialLinks = styled(Box)(() => ({
+  display: "flex",
+  gap: "12px",
+  marginTop: "4px",
+}));
+
+export const SocialLink = styled("a")(() => ({
+  width: "42px",
+  height: "42px",
+  borderRadius: "50%",
+  border: "1px solid rgba(255, 255, 255, 0.18)",
+  backgroundColor: "rgba(0, 0, 0, 0.3)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "rgba(255, 255, 255, 0.85)",
+  textDecoration: "none",
+  transition: "background-color 0.2s, border-color 0.2s, color 0.2s",
+  cursor: "pointer",
+
+  "&:hover": {
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    borderColor: "var(--color-primary-light)",
+    color: "var(--color-primary-light)",
+  },
+
+  "& svg": {
+    fontSize: "20px",
+  },
+}));
+
 export const MapWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
   height: "100%",
