@@ -1,14 +1,75 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 
-export const GalleryWrapper = styled(Box)(() => ({
+export const GalleryWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "bgImage" && prop !== "mobileBgImage",
+})(({ theme, bgImage, mobileBgImage }) => ({
   minHeight: "100vh",
+  marginTop: "-64px",
+  paddingTop: "100px",
+  paddingBottom: "60px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  paddingTop: "80px",
-  paddingBottom: "60px",
-  background: "linear-gradient(180deg, var(--color-primary-darkest) 0%, var(--color-dark) 15%, var(--color-dark) 100%)",
+  position: "relative",
+  isolation: "isolate",
+
+  marginLeft: "-15rem",
+  marginRight: "-15rem",
+  paddingLeft: "15rem",
+  paddingRight: "15rem",
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    backgroundImage: bgImage ? `url(${bgImage})` : "none",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    zIndex: -2,
+
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: mobileBgImage ? `url(${mobileBgImage})` : undefined,
+      backgroundAttachment: "scroll",
+      position: "fixed",
+    },
+  },
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.65)",
+  },
+
+  "& > *": {
+    position: "relative",
+    zIndex: 1,
+  },
+
+  [theme.breakpoints.down("lg")]: {
+    marginLeft: "-80px",
+    marginRight: "-80px",
+    paddingLeft: "80px",
+    paddingRight: "80px",
+  },
+
+  [theme.breakpoints.down("md")]: {
+    marginLeft: "-40px",
+    marginRight: "-40px",
+    paddingLeft: "40px",
+    paddingRight: "40px",
+  },
+
+  [theme.breakpoints.down("sm")]: {
+    marginLeft: "-20px",
+    marginRight: "-20px",
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    minHeight: "100svh",
+  },
 }));
 
 export const CarouselSection = styled(Box)(() => ({

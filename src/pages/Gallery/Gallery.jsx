@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 
+import galleryBgImage from "../../assets/images/gallery-bg.jpg";
 import {
   GalleryWrapper,
   CarouselSection,
@@ -62,7 +63,7 @@ const Gallery = () => {
     }));
 
   return (
-    <GalleryWrapper>
+    <GalleryWrapper bgImage={galleryBgImage}>
       <CarouselSection>
         <SectionTitle>{t("gallery.title")}</SectionTitle>
         <Swiper
