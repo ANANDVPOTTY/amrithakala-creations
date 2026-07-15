@@ -93,17 +93,63 @@ const Bookings = () => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: false }));
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setForm((prev) => ({ ...prev, screenshot: file }));
-      if (errors.screenshot)
-        setErrors((prev) => ({ ...prev, screenshot: false }));
+  const ALLOWED_TYPES = ["image/png", "image/jpeg"];
+  const ALLOWED_EXTENSIONS = /\.(png|jpe?g)$/i;
+  const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1 MB
+
+  const MAGIC_BYTES = {
+    "image/png": [0x89, 0x50, 0x4e, 0x47],
+    "image/jpeg": [0xff, 0xd8, 0xff],
+  };
+
+  const fileInputRef = useRef(null);
+
+  const resetFileInput = () => {
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // 1. Extension + MIME type check
+    if (!ALLOWED_TYPES.includes(file.type) || !ALLOWED_EXTENSIONS.test(file.name)) {
+      setErrors((prev) => ({ ...prev, screenshot: "errorFileType" }));
+      resetFileInput();
+      return;
     }
+
+    // 2. File size check
+    if (file.size > MAX_FILE_SIZE) {
+      setErrors((prev) => ({ ...prev, screenshot: "errorFileSize" }));
+      resetFileInput();
+      return;
+    }
+
+    // 3. Magic byte verification (prevents renamed non-image files)
+    try {
+      const header = await file.slice(0, 4).arrayBuffer();
+      const bytes = new Uint8Array(header);
+      const expected = MAGIC_BYTES[file.type];
+      const isValid = expected.every((b, i) => bytes[i] === b);
+      if (!isValid) {
+        setErrors((prev) => ({ ...prev, screenshot: "errorFileCorrupt" }));
+        resetFileInput();
+        return;
+      }
+    } catch {
+      setErrors((prev) => ({ ...prev, screenshot: "errorFileCorrupt" }));
+      resetFileInput();
+      return;
+    }
+
+    setForm((prev) => ({ ...prev, screenshot: file }));
+    setErrors((prev) => ({ ...prev, screenshot: false }));
   };
 
   const removeFile = () => {
     setForm((prev) => ({ ...prev, screenshot: null }));
+    resetFileInput();
   };
 
   const initCanvas = useCallback((canvas) => {
@@ -506,18 +552,26 @@ const Bookings = () => {
         ) : (
           <UploadArea>
             <HiddenFileInput
+              ref={fileInputRef}
               type="file"
-              accept="image/*"
+              accept=".png,.jpg,.jpeg"
               onChange={handleFileChange}
               id="screenshot-upload"
             />
             <UploadLabel htmlFor="screenshot-upload">
               <UploadIcon />
               <UploadHintText>{t("bookings.chooseFile")}</UploadHintText>
+              <UploadHintText>{t("bookings.uploadHint")}</UploadHintText>
             </UploadLabel>
           </UploadArea>
         )}
-        {errors.screenshot && <FieldError>{t("bookings.required")}</FieldError>}
+        {errors.screenshot && (
+          <FieldError>
+            {errors.screenshot === true
+              ? t("bookings.required")
+              : t(`bookings.${errors.screenshot}`)}
+          </FieldError>
+        )}
 
         {/*-------| Remaining Amount |-------*/}
         <SectionLabel>{t("bookings.remainingAmount")}</SectionLabel>
